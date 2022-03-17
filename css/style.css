@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#div_welcome{
+  top:10%;width:100%; height:15%;
+  font-size:300%;
+  background-color: none;
+}
+  #div_welcome img{
+    height:20%;
+  }
+
+.je-icon{
+  height:100%;
+  width:200px;
+  text-align: center;
+  text-decoration: none;
+}
+
+@media screen and (max-width:600px) {  /* For mobile phones: */
+  #div_welcome{
+    top:2%;width:100%; height:4%;
+    font-size:150%;
+    background-color: none;
+  }
+}
