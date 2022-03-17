@@ -23,7 +23,7 @@ function gotoDiv(d) {
   document.getElementById('wrapper').style.display='block';
   document.getElementById('sap').style.display='none';
   var elmnt = document.getElementById(d);
-  elmnt.scrollIntoView(10);
+  elmnt.scrollIntoView();
 }
 
 function showVideos(){
