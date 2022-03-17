@@ -16,12 +16,18 @@ body {
     height:20%;
   }
 
-.je-icon{
-  height:100%;
-  width:200px;
-  text-align: center;
-  text-decoration: none;
+.je-icon{  
+  margin-left:1%;
+  text-align: center;  
+  border: 0px solid violet;
 }
+  .je-icon a{
+    text-decoration: none;
+  }
+  .je-icon img{
+    height: 100%;
+    width: 50px;
+  }
 
 @media screen and (max-width:600px) {  /* For mobile phones: */
   #div_welcome{
