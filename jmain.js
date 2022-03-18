@@ -9,8 +9,8 @@ var DB_VIDEOS=[
 
 var DB_PHOTOS=[
   { "pic":"photos/fireworks.jpg","descrp":"Guihulngan City fireworks" },
-  { "pic":"photos/fireworks.jpg","descrp":"Guihulngan City fireworks" },
-  { "pic":"photos/fireworks.jpg","descrp":"Guihulngan City fireworks" },
+  { "pic":"photos/sinulog.jpg","descrp":"Sinulog in Guihulngan City" },
+  { "pic":"photos/carabell.jpg","descrp":"Carabell Football Club" },
 ];
 
 
@@ -20,17 +20,23 @@ function home(){
 }
 
 function gotoDiv(d) {
-  document.getElementById('wrapper').style.display='block';
-  document.getElementById('sap').style.display='none';
+  var disp1='block';
+  var disp2='none';
+  if(d=='sap'){
+    disp1='none';
+    disp2='block';
+  }
+  document.getElementById('wrapper').style.display=disp1;
+  document.getElementById('sap').style.display=disp2;
   var elmnt = document.getElementById(d);
   elmnt.scrollIntoView();
 }
 
-function showVideos(){
+function showVideos(d){
   document.getElementById('wrapper').style.display='none';
   document.getElementById('sap').style.display='block';
   var dtl=
-  '<div class="w3-container w3-content w3-center w3-padding-32" style="max-width:1090px;border:0px solid yellow;">'+
+  '<div id="jvideos" class="w3-container w3-content w3-center w3-padding-64" style="max-width:1090px;border:0px solid blue;">'+
     '<h2 class="w3-wide">VIDEOS</h2>'+    
     '<div class="w3-justify">';
     var dtl2='';
@@ -47,13 +53,14 @@ function showVideos(){
   '</div>';
 
   document.getElementById('sap').innerHTML=dtl;
+  gotoDiv('sap');
 }
 
-function showPhotos(){
+function showPhotos(d){
   document.getElementById('wrapper').style.display='none';
   document.getElementById('sap').style.display='block';
   var dtl=
-  '<div class="w3-container w3-content w3-center w3-padding-32" style="max-width:1090px;border:0px solid yellow;">'+
+  '<div id="jphotos" class="w3-container w3-content w3-center w3-padding-64" style="max-width:1090px;border:0px solid yellow;">'+
     '<h2 class="w3-wide">PHOTOS</h2>'+    
     '<div class="w3-justify">';
     var dtl2='';
@@ -70,4 +77,5 @@ function showPhotos(){
   '</div>';
 
   document.getElementById('sap').innerHTML=dtl;
+  gotoDiv('sap');
 }

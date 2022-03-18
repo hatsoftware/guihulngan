@@ -39,8 +39,8 @@ html {
     <div class="w3-dropdown-hover w3-hide-small">
       <button class="w3-padding-large w3-button" title="Gallery">Gallery <i class="fa fa-caret-down"></i></button>     
       <div class="w3-dropdown-content w3-bar-block w3-card-4">
-        <a href="javascript:showPhotos()" class="w3-bar-item w3-button">Photo</a>
-        <a href="javascript:showVideos()" class="w3-bar-item w3-button">Video</a>
+        <a id="jeffPhoto" href="javascript:showPhotos('sap')" class="w3-bar-item w3-button">Photo</a>
+        <a id="jeffVideo" href="javascript:showVideos('sap')" class="w3-bar-item w3-button">Video</a>
       </div>
     </div>
     <a href="javascript:gotoDiv('tourism')" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Tourism</a>
@@ -55,12 +55,13 @@ html {
 <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px;">  
   <a href="javascript:gotoDiv('city')" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">City Government</a>
   <a href="javascript:gotoDiv('barangay')" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Barangays</a>
-  <a href="javascript:gotoDiv('contact')" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Gallery</a>
-  <a href="javascript:home()" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Tourism</a>  
+  <a href="javascript:showPhotos('sap')" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Gallery - Photos</a>
+  <a href="javascript:showVideos('sap')" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Gallery - Videos</a>
+  <a href="javascript:showVideos('tourism')" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Tourism</a>  
 </div>
 
 <!-- SAP Page content -->
-<div id="sap" class="w3-content" style="display:none;max-width:2000px;margin-top:46px;position:relative;">
+<div id="sap" class="w3-content" style="display:none;max-width:2000px;margin-top:50px;border:0px solid violet;">
 </div>
 
 <!-- Page content -->
@@ -89,6 +90,7 @@ html {
     </div>
   </div>
 
+  <!--div id="div_welcome" style="position:absolute;text-align:center;"-->    
   <div id="div_welcome" style="position:absolute;text-align:center;">    
     <img src="gfx/logo.png" style="height:80%;">
     <div style="width:100%;color:white;text-shadow:1px 1px 10px black;font-weight: bold;">Welcome to Guihulngan City</div>
@@ -106,7 +108,7 @@ html {
       Whether it originated as "GUIPADULNGAN" or "GUIHULNGAN", the name is indeed symbolic, as the town is “dropped” with abundant blessings from the Almighty for a significant "end".[7]      
       In 17th century map Murillo-Velarde Map it somewhat appears as "Dijolongan".
     </p>
-
+<hr>
     <h2 class="w3-wide">CITY GOVERNMENT</h2>
     <p class="w3-opacity"><i>City Mayor</i></p>
     <div class="w3-row w3-padding-32">
@@ -185,83 +187,87 @@ html {
       </ul>
     </p>    
   </div>
-  
-  <hr>
-  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="tourism">
-    <h2 class="w3-wide">TOURISM</h2>
-    <p class="w3-opacity"><i>Tourism Industry</i></p>
-    <p>
-      Tourism Industry
-    </p>    
-  </div>
-  
-  
-<!-- End Page Content -->
 </div>
-
-
+  
+<hr>
+<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px;" id="tourism">
+  <h2 class="w3-wide">TOURISM</h2>
+  <p class="w3-opacity"><i>Tourism Industry</i></p>
+  <p>
+    Tourism Industry
+  </p>    
+</div>
+<!-- End Page Content -->
 
 
 <!-- Footer -->
-<footer class="w3-container w3-light-grey w3-xlarge">
 
-  <div id="contact" class="w3-container w3-padding-32" style="margin:auto;max-width:1000px;border:0px solid green;">
+<footer>  
 
-    <div class="w3-container w3-half w3-left" style="border:0px solid red;">
+  <div id="contact" class="w3-container w3-light-grey" style="border:0px solid black;">
+    
+    <div class="w3-container w3-padding-32" style="margin:auto;max-width:1100px;border:0px solid green;">
 
-      <div  class="w3-container">
-        <div class="w3-row">Follow Us:</div>
-        <div class="w3-row">
-          <!-- FACEBOOK -->
-          <span class="je-icon">
-            <a href="https://facebook.com/lguguihulngancity" target="_blank">            
-              <img src="gfx/fb.png"/>            
-            </a>
-          </span>
-          <!-- TWITTER -->
-          <span class="je-icon">
-            <a href="https://facebook.com/lguguihulngancity" target="_blank">            
-              <img src="gfx/tw.png"/>            
-            </a>
-          </span>
-          <!-- INSTAGRAM -->
-          <span class="je-icon">
-            <a href="https://www.instagram.com/explore/tags/guihulngan/?hl=en" target="_blank">            
-              <img src="gfx/ig.png"/>            
-            </a>
-          </span>
-          <!-- YOUTUBE -->
-          <span class="je-icon">
-            <a href="https://www.youtube.com/watch?v=7n-rugwhI00" target="_blank">            
-              <img src="gfx/yt.png"/>            
-            </a>
-          </span>
+      <div class="w3-container w3-half w3-left w3-center" style="border:0px solid red;">
+
+        <div  class="w3-container">
+          <div class="w3-row">Follow Us:</div>
+          <div class="w3-row">
+            <!-- FACEBOOK -->
+            <span class="je-icon">
+              <a href="https://facebook.com/lguguihulngancity" target="_blank">            
+                <img src="gfx/fb.png"/>            
+              </a>
+            </span>
+            <!-- TWITTER -->
+            <span class="je-icon">
+              <!--a href="javascript:void(0)" target="_blank"-->
+                <img src="gfx/tw.png"/>            
+              <!--/a-->
+            </span>
+            <!-- INSTAGRAM -->
+            <span class="je-icon">
+              <a href="https://www.instagram.com/explore/tags/guihulngan/?hl=en" target="_blank">            
+                <img src="gfx/ig.png"/>            
+              </a>
+            </span>
+            <!-- YOUTUBE -->
+            <span class="je-icon">
+              <a href="https://www.youtube.com/watch?v=7n-rugwhI00" target="_blank">            
+                <img src="gfx/yt.png"/>            
+              </a>
+            </span>
+          </div>
         </div>
-      </div>
 
-      <div class="w3-container w3-padding-32">
-        <img src="gfx/logo.png" class="w3-margin-bottom" alt="Random Name" style="height: 200px;">      
-        <div class="w3-row">City Government of Guihulngan</div>
+        <div class="w3-container w3-padding-32">
+          <img src="gfx/logo.png" class="w3-margin-bottom" alt="Random Name" style="height: 200px;">      
+          <div class="w3-row">City Government of Guihulngan</div>
+        </div>
+        
       </div>
       
-    </div>
-    
 
-    <div class="w3-container w3-half w3-right" style="border:0px solid violet;">      
-      <div>
-        <div class="w3-col m6 w3-large w3-margin-bottom">
-          <i class="fa fa-map-marker" style="width:30px"></i> Guihulngan City, Negros Oriental PH<br>
-          <i class="fa fa-phone" style="width:30px"></i> Phone: +00 151515<br>
-          <i class="fa fa-envelope" style="width:30px"> </i> Email: lgu.guihulngan.city@gmail.com<br>
-        </div>        
+      <div class="w3-container w3-half w3-right" style="padding:0 0 0 10%;border:0px solid violet;">      
+        
+          <div class="w3-container w3-large">
+            Guihulngan City, Negros Oriental PH<br>
+            Phone:<br>
+            Email: lgu.guihulngan.city@gmail.com<br>
+          </div>        
+        
       </div>
-    </div>
 
+    </div>
   </div>
   
-  <div class="w3-row w3-medium w3-center w3-padding-32">Powered by <a href="https://hatsoftware.github.io" target="_blank">Hatsoftware Development Services</a></div>
   
+
+  <div class="w3-row w3-medium w3-center w3-padding w3-gray">Powered by <a href="https://hatsoftware.github.io" style="text-decoration:none;color:red;font-weight:bold;" target="_blank">
+    Hatsoftware Development Services</a>
+  </div>
 </footer>
+
 <script type='text/javascript' src='jmain.js'></script>
 
 <script>  
