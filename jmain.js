@@ -13,12 +13,6 @@ var DB_PHOTOS=[
   { "pic":"photos/carabell.jpg","descrp":"Carabell Football Club" },
 ];
 
-
-function home(){
-  document.getElementById('wrapper').style.display='block';
-  document.getElementById('sap').style.display='none';
-}
-
 function gotoDiv(d) {
   var disp1='block';
   var disp2='none';
@@ -28,10 +22,7 @@ function gotoDiv(d) {
   }else{
     var iframe = document.querySelector('iframe');	
     if(iframe) {
-      alert('found iframe');
-      //iframe.remove();
-      //iframe.parentNode.removeChild(iframe);
-      //iframe=null;
+      //alert('found iframe');
       document.getElementById('sap').innerHTML='';
       document.getElementById('wrapper').style.display='block';
     }
