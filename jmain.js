@@ -25,7 +25,18 @@ function gotoDiv(d) {
   if(d=='sap'){
     disp1='none';
     disp2='block';
+  }else{
+    var iframe = document.querySelector('iframe');	
+    if(iframe) {
+      alert('found iframe');
+      //iframe.remove();
+      //iframe.parentNode.removeChild(iframe);
+      //iframe=null;
+      document.getElementById('sap').innerHTML='';
+      document.getElementById('wrapper').style.display='block';
+    }
   }
+  
   document.getElementById('wrapper').style.display=disp1;
   document.getElementById('sap').style.display=disp2;
   var elmnt = document.getElementById(d);
