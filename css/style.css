@@ -8,7 +8,7 @@ body {
 }
 
 #div_welcome{
-  top:10%;width:100%; height:15%;
+  top:25%;width:100%; height:50%;
   font-size:300%;
   background-color: none;
 }
@@ -31,7 +31,7 @@ body {
 
 @media screen and (max-width:600px) {  /* For mobile phones: */
   #div_welcome{
-    top:2%;width:100%; height:4%;
+    top:25%;width:100%; height:50%;
     font-size:150%;
     background-color: none;
   }
