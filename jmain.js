@@ -85,7 +85,7 @@ function showPhotos(){
       dtl2+=
       '<div class="w3-container w3-third w3-margin-top" style="border:0px solid red;height:330px;">'+
       '<div class="w3-container w3-card-4 w3-padding-16">'+
-          '<img width="100%" height="200px"'+
+          '<img onclick="do_zoom_photos('+i+')" width="100%" height="200px"'+
             'src="'+DB_PHOTOS[i]['pic']+'"'+
           '/>'+ 
           '<span>'+DB_PHOTOS[i]['descrp']+'</span>'+
@@ -122,7 +122,8 @@ function showArticles(){
           
           '<div class="w3-row">'+
             '<h6 id="dv_date" class="w3-container w3-twothird w3-cell-bottom"><i>'+JBE_DATE_FORMAT(DB_ARTICLES[i]['date'],"MMM DD, YYYY")+'</i></h6>'+        
-            '<input type="button" class="w3-row w3-onethird w3-btn w3-purple" onclick="do_zoom_articles(&quot;div_zoom_articles&quot;,'+i+')" value="View"/>'+
+            //'<input type="button" class="w3-row w3-onethird w3-btn w3-purple" onclick="do_zoom_articles(&quot;div_zoom_articles&quot;,'+i+')" value="View"/>'+
+            '<input type="button" class="w3-row w3-onethird w3-btn w3-purple" onclick="do_zoom_articles('+i+')" value="View"/>'+
           '</div>'+
         '</div>'+
 
@@ -141,7 +142,39 @@ function showArticles(){
   gotoDiv('sap');
 }
 
-function do_zoom_articles(div,v){
+function do_zoom_articles(v){
+  alert(v);
+  var dtl=
+    '<div class="w3-container w3-padding-32">'+
+      '<div id="zm_title" class="w3-row">'+DB_ARTICLES[v]['title']+'</div>'+
+      '<img id="zm_img" src="'+DB_ARTICLES[v]['pic']+'" class="w3-image"/>'+ 
+      '<div id="zm_story" class="w3-panel" style="text-align:left;">'+DB_ARTICLES[v]['story']+'</div>'+        
+      '<div class="w3-container w3-center">'+
+        '<input type="button" class="w3-btn w3-purple" onclick="document.getElementById(&quot;modalBox&quot;).style.display=&quot;none&quot;" value="Back"/>'+
+      '</div>'+
+    '</div>';
+  
+  DO_ZOOM(dtl);
+}
+function do_zoom_photos(v){
+  var dtl=
+    '<div class="w3-container w3-padding-32">'+      
+      '<img id="zm_img" src="'+DB_PHOTOS[v]['pic']+'" class="w3-image"/>'+ 
+      '<div id="zm_story" class="w3-panel" style="text-align:left;">'+DB_PHOTOS[v]['descrp']+'</div>'+        
+      '<div class="w3-container w3-center">'+
+        '<input type="button" class="w3-btn w3-purple" onclick="document.getElementById(&quot;modalBox&quot;).style.display=&quot;none&quot;" value="Back"/>'+
+      '</div>'+
+    '</div>';
+  
+  DO_ZOOM(dtl);
+}
+
+function DO_ZOOM(dtl){  
+  document.getElementById('modalBody').innerHTML=dtl;
+  document.getElementById('modalBox').style.display='block';
+}
+
+function xxxdo_zoom_articles(div,v){
   var dtl=
     '<div class="w3-container w3-card-4 w3-padding-32">'+
       '<div id="zm_title" class="w3-row">'+DB_ARTICLES[v]['title']+'</div>'+
