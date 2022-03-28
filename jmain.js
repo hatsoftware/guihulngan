@@ -85,7 +85,7 @@ function showPhotos(){
       dtl2+=
       '<div class="w3-container w3-third w3-margin-top" style="border:0px solid red;height:330px;">'+
       '<div class="w3-container w3-card-4 w3-padding-16">'+
-          '<img onclick="do_zoom_photos('+i+')" width="100%" height="200px"'+
+          '<img onclick="do_zoom_photos('+i+')" style="cursor:zoom-in;" width="100%" height="200px"'+
             'src="'+DB_PHOTOS[i]['pic']+'"'+
           '/>'+ 
           '<span>'+DB_PHOTOS[i]['descrp']+'</span>'+
