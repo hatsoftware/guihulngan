@@ -11,6 +11,19 @@ var DB_PHOTOS=[
   { "pic":"photos/fireworks.jpg","descrp":"Guihulngan City fireworks" },
   { "pic":"photos/sinulog.jpg","descrp":"Sinulog in Guihulngan City" },
   { "pic":"photos/carabell.jpg","descrp":"Carabell Football Club" },
+  { "pic":"photos/fireworks.jpg","descrp":"Guihulngan City fireworks" },
+  { "pic":"photos/sinulog.jpg","descrp":"Sinulog in Guihulngan City" },
+  { "pic":"photos/carabell.jpg","descrp":"Carabell Football Club" }
+];
+
+var DB_ARTICLES=[
+  { "title":"Article 1","pic":"photos/fireworks.jpg","story":"Article 1 story","date":"2022-01-20" },
+  { "title":"Article 2","pic":"photos/fireworks.jpg","story":"Article 2 story Article 2 story Article 2 story Article 2 story Article 3 story Article 2 story Article 2 story Article 2 story","date":"2022-01-20" },
+  { "title":"Article 3","pic":"photos/fireworks.jpg","story":"Article 3 story Article 3 story Article 3 story Article 2 story","date":"2022-03-20" },
+  
+  { "title":"Article 4","pic":"photos/fireworks.jpg","story":"Article 4 story","date":"2022-01-20" },
+  { "title":"Article 5","pic":"photos/fireworks.jpg","story":"story Article 2 story Article 2 story Article 2 story","date":"2022-01-20" },
+  { "title":"Article 6","pic":"photos/fireworks.jpg","story":"Article 6 story","date":"2022-01-20" }
 ];
 
 function gotoDiv(d) {
@@ -44,21 +57,23 @@ function showVideos(d){
     var dtl2='';
     for(var i=0;i<DB_VIDEOS.length;i++){
       dtl2+=
-      '<div class="w3-card" style="float:left;border:0px solid lightgray;margin:10px;padding:5px;width:320px;height:300px;overflow:auto;">'+
-        '<iframe width="100%" height="200px"'+
-          'src="'+DB_VIDEOS[i]['link']+'">'+
-        '</iframe>'+ 
-        '<span>'+DB_VIDEOS[i]['descrp']+'</span>'+
+      '<div class="w3-container w3-third w3-margin-top" style="border:0px solid red;height:330px;">'+
+        '<div class="w3-container w3-card-4 w3-padding-16">'+
+          '<iframe width="100%" height="200px"'+
+            'src="'+DB_VIDEOS[i]['link']+'">'+
+          '</iframe>'+ 
+          '<span>'+DB_VIDEOS[i]['descrp']+'</span>'+
+        '</div>'+
       '</div>';      
     }
     dtl+=dtl2+
-  '</div>';
-
+  '</div>'+
+  '<button class="w3-container w3-padding w3-center w3-btn w3-purple" onclick="gotoDiv(&quot;latestVideos&quot;)">Back</button>';
   document.getElementById('sap').innerHTML=dtl;
   gotoDiv('sap');
 }
 
-function showPhotos(d){
+function showPhotos(){
   document.getElementById('wrapper').style.display='none';
   document.getElementById('sap').style.display='block';
   var dtl=
@@ -68,16 +83,95 @@ function showPhotos(d){
     var dtl2='';
     for(var i=0;i<DB_PHOTOS.length;i++){
       dtl2+=
-      '<div class="w3-card" style="float:left;border:0px solid lightgray;margin:10px;padding:5px;width:320px;height:300px;overflow:auto;">'+
-        '<img width="100%" height="200px"'+
-          'src="'+DB_PHOTOS[i]['pic']+'"'+
-        '/>'+ 
-        '<span>'+DB_PHOTOS[i]['descrp']+'</span>'+
-      '</div>';      
+      '<div class="w3-container w3-third w3-margin-top" style="border:0px solid red;height:330px;">'+
+      '<div class="w3-container w3-card-4 w3-padding-16">'+
+          '<img width="100%" height="200px"'+
+            'src="'+DB_PHOTOS[i]['pic']+'"'+
+          '/>'+ 
+          '<span>'+DB_PHOTOS[i]['descrp']+'</span>'+
+        '</div>'+
+      '</div>';        
     }
     dtl+=dtl2+
-  '</div>';
+  '</div>'+
+  '<button class="w3-container w3-padding w3-center w3-btn w3-purple" onclick="gotoDiv(&quot;latestPhotos&quot;)">Back</button>';
 
   document.getElementById('sap').innerHTML=dtl;
   gotoDiv('sap');
+}
+
+function showArticles(){
+  DB_ARTICLES.sort(sortByMultipleKey(['*date']));
+  document.getElementById('wrapper').style.display='none';
+  document.getElementById('sap').style.display='block';
+  var dtl=
+  '<div id="div_articles" class="w3-container w3-content w3-center w3-padding-32">'+
+    '<h2 class="w3-wide">ARTICLES</h2>'+    
+    '<div class="w3-justify">';
+    var dtl2='';
+    for(var i=0;i<DB_ARTICLES.length;i++){      
+
+      dtl2+=
+      '<div id="dv_articles" class="w3-container w3-third w3-margin-top" style="border:0px solid red;height:330px;">'+
+
+        '<div class="w3-container w3-card-4 w3-padding-16">'+
+          '<div class="w3-row">'+DB_ARTICLES[i]['title']+'</div>'+          
+          '<img class="w3-border w3-padding-12" width="100%" height="150px"'+
+            'src="'+DB_ARTICLES[i]['pic']+'"/>'+ 
+          '<div id="dv_story" class="w3-row">'+DB_ARTICLES[i]['story']+'</div>'+        
+          
+          '<div class="w3-row">'+
+            '<h6 id="dv_date" class="w3-container w3-twothird w3-cell-bottom"><i>'+JBE_DATE_FORMAT(DB_ARTICLES[i]['date'],"MMM DD, YYYY")+'</i></h6>'+        
+            '<input type="button" class="w3-row w3-onethird w3-btn w3-purple" onclick="zoom_articles(&quot;div_zoom_articles&quot;,true,'+i+')" value="View"/>'+
+          '</div>'+
+        '</div>'+
+
+      '</div>';       
+    }
+    dtl+=dtl2+
+    '</div>'+
+    '<button class="w3-container w3-padding w3-center w3-btn w3-purple" onclick="gotoDiv(&quot;latest&quot;)">Back</button>'+
+  '</div>'+
+  
+
+  '<div id="div_zoom_articles" class="w3-container w3-content w3-center w3-padding-32" style="min-height:600px;display:none;">'+
+  '</div>';
+
+  document.getElementById('sap').innerHTML=dtl;  
+  gotoDiv('sap');
+}
+
+function zoom_articles(div,f,v){
+  alert('going zoom, div is: '+div);
+  var dtl=
+    '<div class="w3-container w3-card-4 w3-padding-32">'+
+      '<div id="zm_title" class="w3-row">'+DB_ARTICLES[v]['title']+'</div>'+
+      '<img id="zm_img" src="'+DB_ARTICLES[v]['pic']+'" class="w3-image"/>'+ 
+      '<div id="zm_story" class="w3-panel" style="text-align:left;">'+DB_ARTICLES[v]['story']+'</div>'+        
+      '<div class="w3-container w3-center">'+
+        '<input type="button" class="w3-btn w3-purple" onclick="close_zoom_articles(&quot;'+div+'&quot;)" value="Back"/>'+
+      '</div>'+
+    '</div>';
+
+  if(div=='sap'){
+    gotoDiv('sap');
+  }else{
+    document.getElementById('div_articles').style.display='none';
+    document.getElementById('div_zoom_articles').style.display='block';
+  }  
+  //document.getElementById('zm_title').innerHTML=DB_ARTICLES[v]['title'];
+  //document.getElementById('zm_img').src=DB_ARTICLES[v]['pic'];
+  //document.getElementById('zm_story').innerHTML=DB_ARTICLES[v]['story'];
+  document.getElementById(div).innerHTML=dtl;
+}
+function close_zoom_articles(div){
+  alert('going to close zoom, div is: '+div);
+  if(div=='sap'){
+    //document.getElementById('wrapper').style.display='block';
+    //document.getElementById('sap').style.display='none';
+    gotoDiv('latest');
+  }else{
+    document.getElementById('div_articles').style.display='block';
+    document.getElementById('div_zoom_articles').style.display='none';
+  }
 }

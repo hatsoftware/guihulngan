@@ -17,7 +17,7 @@
 body {font-family: "Lato", sans-serif}
 .mySlides {display: none}
 hr{
-  width:100%;height:5px;background-color:lightgray;
+  width:100%;height:1px;background-color:lightgray;
 }
 html {
   scroll-behavior: smooth;
@@ -44,6 +44,7 @@ html {
       </div>
     </div>
     <a href="javascript:gotoDiv('tourism')" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Tourism</a>
+    <a href="javascript:showArticles('sap')" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Articles</a>
     <a href="javascript:gotoDiv('contact')" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Contact</a>
     
     <!--a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a-->
@@ -57,7 +58,7 @@ html {
   <a href="javascript:gotoDiv('barangay')" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Barangays</a>
   <a href="javascript:showPhotos('sap')" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Gallery - Photos</a>
   <a href="javascript:showVideos('sap')" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Gallery - Videos</a>
-  <a href="javascript:showVideos('tourism')" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Tourism</a>  
+  <a href="javascript:gotoDiv('tourism')" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Tourism</a>    
 </div>
 
 <!-- SAP Page content -->
@@ -65,38 +66,51 @@ html {
 </div>
 
 <!-- Page content -->
-<div id="wrapper" class="w3-content" style="max-width:2000px;margin-top:46px;position:relative;">
+<div id="wrapper" class="w3-content" style="max-width:2000px;margin-top:46px;">
+  <div style="max-width:100%;position:relative;">
 
-  <!-- Automatic Slideshow Images -->
-  <div class="mySlides w3-animate-fading">
-    <img src="gfx/main0.jpg" style="width:100%">
-    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-      <h3>Los Angeles</h3>
-      <p><b>We had the best time playing at Venice Beach!</b></p>   
+    <!-- Automatic Slideshow Images -->
+    <div class="mySlides w3-animate-fading">
+      <img src="gfx/main0.jpg" style="width:100%">
+      <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+        
+      </div>
     </div>
-  </div>
-  <div class="mySlides w3-animate-fading">
-    <img src="gfx/main1.jpg" style="width:100%">
-    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-      <h3>New York</h3>
-      <p><b>The atmosphere in New York is lorem ipsum.</b></p>    
+    <div class="mySlides w3-animate-fading">
+      <img src="gfx/main1.jpg" style="width:100%">
+      <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+        
+      </div>
     </div>
-  </div>
-  <div class="mySlides w3-animate-fading">
-    <img src="gfx/main2.jpg" style="width:100%">
-    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-      <h3>Chicago</h3>
-      <p><b>Thank you, Chicago - A night we won't forget.</b></p>    
+    <div class="mySlides w3-animate-fading">
+      <img src="gfx/main2.jpg" style="width:100%">
+      <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+        
+      </div>
     </div>
+
+    <!--div id="div_welcome" style="position:absolute;text-align:center;"-->    
+    <div id="div_welcome" style="position:absolute;text-align:center;">    
+      <img src="gfx/logo.png" style="height:80%;">
+      <div style="width:100%;color:white;text-shadow:1px 1px 10px black;font-weight: bold;">Welcome to Guihulngan City</div>
+    </div>
+
   </div>
 
-  <!--div id="div_welcome" style="position:absolute;text-align:center;"-->    
-  <div id="div_welcome" style="position:absolute;text-align:center;">    
-    <img src="gfx/logo.png" style="height:80%;">
-    <div style="width:100%;color:white;text-shadow:1px 1px 10px black;font-weight: bold;">Welcome to Guihulngan City</div>
+  <div class="w3-container w3-content w3-center w3-padding-64">
+    <h2 class="w3-wide">LATEST ARTICLES</h2>    
+    <div id="latest">      
+    </div>    
+  </div>
+  
+  <!-- Happenings -->
+  <hr>
+  <div class="w3-container w3-content w3-center w3-padding-64" id="happenings">
+    <h2 class="w3-wide">HAPPENINGS IN GUIHULNGAN</h2>
   </div>
 
   <!-- The City Section -->
+  <hr>
   <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="city">
     <h2 class="w3-wide">THE CITY</h2>
     <p class="w3-opacity"><i>History</i></p>
@@ -108,7 +122,7 @@ html {
       Whether it originated as "GUIPADULNGAN" or "GUIHULNGAN", the name is indeed symbolic, as the town is “dropped” with abundant blessings from the Almighty for a significant "end".[7]      
       In 17th century map Murillo-Velarde Map it somewhat appears as "Dijolongan".
     </p>
-<hr>
+    <hr>
     <h2 class="w3-wide">CITY GOVERNMENT</h2>
     <p class="w3-opacity"><i>City Mayor</i></p>
     <div class="w3-row w3-padding-32">
@@ -187,16 +201,34 @@ html {
       </ul>
     </p>    
   </div>
+
+  <hr>
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px;" id="tourism">
+    <h2 class="w3-wide">TOURISM</h2>
+    <p class="w3-opacity"><i>Tourism Industry</i></p>
+    <p>
+      Tourism Industry
+    </p>    
+  </div>
+
+  <hr>
+  <div class="w3-container w3-content w3-center w3-padding-64">
+    <h2 class="w3-wide">PHOTO RELEASES</h2>    
+    <div id="latestPhotos">      
+    </div>    
+  </div>
+
+  <hr>
+  <div class="w3-container w3-content w3-center w3-padding-64">
+    <h2 class="w3-wide">VIDEO RELEASES</h2>    
+    <div id="latestVideos">      
+    </div>    
+  </div>
+
 </div>
   
-<hr>
-<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px;" id="tourism">
-  <h2 class="w3-wide">TOURISM</h2>
-  <p class="w3-opacity"><i>Tourism Industry</i></p>
-  <p>
-    Tourism Industry
-  </p>    
-</div>
+
+
 <!-- End Page Content -->
 
 
@@ -268,13 +300,97 @@ html {
   </div>
 </footer>
 
+<script type='text/javascript' src='js/enadlib.js'></script>
 <script type='text/javascript' src='jmain.js'></script>
 
 <script>  
-gotoDiv('wrapper');
-// Automatic Slideshow - change image every 4 seconds
-var myIndex = 0;
-carousel();
+
+function showLatest(){  
+  DB_ARTICLES.sort(sortByMultipleKey(['*date']));  
+  var dtl=
+  //'<div class="w3-container w3-content w3-center w3-padding-32">'+
+  '<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:1090px;border:0px solid yellow;">'+
+    
+    '<div class="w3-justify">';
+    var dtl2='';
+    var ctr=3;
+    if(DB_ARTICLES.length < ctr){ ctr=DB_ARTICLES.length; }
+    for(var i=0;i<ctr;i++){      
+      dtl2+=
+      '<div class="w3-container w3-third w3-margin-top" style="border:0px solid red;height:330px;">'+
+
+        '<div class="w3-container w3-card-4 w3-padding-16">'+
+          '<div class="w3-row">'+DB_ARTICLES[i]['title']+'</div>'+          
+          '<img class="w3-border w3-padding-12" width="100%" height="150px"'+
+            'src="'+DB_ARTICLES[i]['pic']+'"/>'+ 
+          '<div class="w3-row">'+DB_ARTICLES[i]['story']+'</div>'+        
+          
+          '<div class="w3-row">'+
+            '<h6 class="w3-container w3-twothird w3-text-black w3-cell-bottom"><i>'+JBE_DATE_FORMAT(DB_ARTICLES[i]["date"],"MMM DD, YYYY")+'</i></h6>'+        
+            '<input type="button" class="w3-row w3-onethird w3-btn w3-purple" onclick="zoom_articles(&quot;sap&quot;,true,'+i+')" value="View"/>'+
+          '</div>'+
+        '</div>'+
+
+      '</div>';       
+    }
+    dtl+=dtl2+    
+  '</div>'+    
+  '<button class="w3-container w3-padding w3-center w3-btn w3-purple" onclick="showArticles()">View More</button>';
+
+  document.getElementById('latest').innerHTML=dtl;
+}
+
+function showLatestPhotos(){    
+  var dtl=
+  '<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:1090px;border:0px solid yellow;">'+
+     
+    '<div class="w3-justify">';
+    var dtl2='';
+    var ctr=3;
+    if(DB_PHOTOS.length < ctr){ ctr=DB_PHOTOS.length; }
+    for(var i=0;i<ctr;i++){
+      dtl2+=
+      '<div class="w3-container w3-third" style="border:0px solid red;height:330px;">'+
+      '<div class="w3-container w3-card-4 w3-padding-16">'+
+          '<img width="100%" height="200px"'+
+            'src="'+DB_PHOTOS[i]['pic']+'"'+
+          '/>'+ 
+          '<span>'+DB_PHOTOS[i]['descrp']+'</span>'+
+        '</div>'+
+      '</div>';        
+    }
+    dtl+=dtl2+
+  '</div>'+  
+  '<button class="w3-container w3-padding w3-center w3-btn w3-purple" onclick="showPhotos()">View More</button>';
+
+  document.getElementById('latestPhotos').innerHTML=dtl;
+}
+
+function showLatestVideos(){    
+  var dtl=
+  '<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:1090px;border:0px solid yellow;">'+
+    
+    '<div class="w3-justify">';
+    var dtl2='';
+    var ctr=2;
+    if(DB_VIDEOS.length < ctr){ ctr=DB_VIDEOS.length; }
+    for(var i=0;i<ctr;i++){
+      dtl2+=
+      '<div class="w3-container w3-half w3-margin-top" style="border:0px solid red;height:330px;">'+
+        '<div class="w3-container w3-card-4 w3-padding-16">'+
+          '<iframe width="100%" height="200px"'+
+            'src="'+DB_VIDEOS[i]['link']+'">'+
+          '</iframe>'+ 
+          '<span>'+DB_VIDEOS[i]['descrp']+'</span>'+
+        '</div>'+
+      '</div>';        
+    }
+    dtl+=dtl2+
+  '</div>'+
+  '<button class="w3-row w3-padding w3-center w3-btn w3-purple" onclick="showVideos()">View More</button>';
+
+  document.getElementById('latestVideos').innerHTML=dtl;
+}
 
 function carousel() {
   var i;
@@ -298,6 +414,11 @@ function myFunction() {
   }
 }
 
+
+// Automatic Slideshow - change image every 4 seconds
+var myIndex = 0;
+carousel();
+
 // When the user clicks anywhere outside of the modal, close it
 var modal = document.getElementById('ticketModal');
 window.onclick = function(event) {
@@ -305,6 +426,10 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+showLatest();
+showLatestPhotos();
+showLatestVideos();
 </script>
 
 </body>
