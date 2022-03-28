@@ -122,7 +122,7 @@ function showArticles(){
           
           '<div class="w3-row">'+
             '<h6 id="dv_date" class="w3-container w3-twothird w3-cell-bottom"><i>'+JBE_DATE_FORMAT(DB_ARTICLES[i]['date'],"MMM DD, YYYY")+'</i></h6>'+        
-            '<input type="button" class="w3-row w3-onethird w3-btn w3-purple" onclick="zoom_articles(&quot;div_zoom_articles&quot;,true,'+i+')" value="View"/>'+
+            '<input type="button" class="w3-row w3-onethird w3-btn w3-purple" onclick="do_zoom_articles(&quot;div_zoom_articles&quot;,'+i+')" value="View"/>'+
           '</div>'+
         '</div>'+
 
@@ -141,8 +141,7 @@ function showArticles(){
   gotoDiv('sap');
 }
 
-function zoom_articles(div,f,v){
-  alert('going zoom, div is: '+div);
+function do_zoom_articles(div,v){
   var dtl=
     '<div class="w3-container w3-card-4 w3-padding-32">'+
       '<div id="zm_title" class="w3-row">'+DB_ARTICLES[v]['title']+'</div>'+
@@ -154,18 +153,20 @@ function zoom_articles(div,f,v){
     '</div>';
 
   if(div=='sap'){
+    //document.getElementById('wrapper').style.display='none';
+    //document.getElementById('sap').style.display='block';
+    var ddtl=
+      '<div class="w3-container w3-content w3-center w3-padding-32" style="min-height:600px;display:block;">'+
+      dtl+'</div>';
+    document.getElementById('sap').innerHTML=ddtl;  
     gotoDiv('sap');
   }else{
     document.getElementById('div_articles').style.display='none';
     document.getElementById('div_zoom_articles').style.display='block';
-  }  
-  //document.getElementById('zm_title').innerHTML=DB_ARTICLES[v]['title'];
-  //document.getElementById('zm_img').src=DB_ARTICLES[v]['pic'];
-  //document.getElementById('zm_story').innerHTML=DB_ARTICLES[v]['story'];
-  document.getElementById(div).innerHTML=dtl;
+    document.getElementById(div).innerHTML=dtl;
+  } 
 }
 function close_zoom_articles(div){
-  alert('going to close zoom, div is: '+div);
   if(div=='sap'){
     //document.getElementById('wrapper').style.display='block';
     //document.getElementById('sap').style.display='none';

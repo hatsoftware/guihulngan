@@ -97,10 +97,11 @@ html {
 
   </div>
 
-  <div class="w3-container w3-content w3-center w3-padding-64">
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:100%;" id="latest">
     <h2 class="w3-wide">LATEST ARTICLES</h2>    
-    <div id="latest">      
+    <div id="dtl_latest">      
     </div>    
+    <button class="w3-row w3-padding w3-center w3-btn w3-purple" onclick="showArticles()">View More</button>
   </div>
   
   <!-- Happenings -->
@@ -133,9 +134,9 @@ html {
     </div>
     
     <h2 class="w3-wide">City Councilors</h2>
-    <div style="border:1px solid lightgray;height:150px;">
+    <div class="w3-container w3-content  w3-center" style="max-width:600px;border:1px solid lightgray;">
        
-      <ul style="float:left;width:35%;margin-left:15%;text-align:left;background-color:none;">
+      <!--ul style="float:left;width:35%;margin-left:15%;text-align:left;background-color:none;">
         <li>Filomeno L. Reyes</li>
         <li>Ana Carla T. Villarmente</li>
         <li>Pietro Alberto M. Pasigna</li>
@@ -148,6 +149,21 @@ html {
         <li>Alvin Lance M. Trinidad</li>
         <li>Simplicio V. Mijares</li>
         <li>Samuel R. Rizon</li> 
+      </ul-->
+
+      <ul class="w3-container w3-half w3-left-align w3-padding">
+        <li>Filomeno L. Reyes</li>
+        <li>Ana Carla T. Villarmente</li>
+        <li>Pietro Alberto M. Pasigna</li>
+        <li>Angelito M. Pique</li>
+        <li>Lor Abednego S. Besario</li>
+      </ul>  
+      <ul class="w3-container w3-half  w3-left-align w3-padding">
+        <li>Melbourne T. Bustamante</li>
+        <li>Paulo Edison D. Dela Rita Jr.</li>
+        <li>Alvin Lance M. Trinidad</li>
+        <li>Simplicio V. Mijares</li>
+        <li>Samuel R. Rizon</li> 
       </ul>
       
     </div>  
@@ -155,12 +171,11 @@ html {
   </div>
 
   <hr>
-  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="barangay">
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:600px" id="barangay">
     <h2 class="w3-wide">THE BARANGAYS</h2>
     <p class="w3-opacity"><i>Guihulngan is politically subdivided into 33 barangays</i></p>
-    <p>
-      
-      <ul style="float:left;width:33%;text-align:left;background-color:none;">
+    <p>      
+      <ul class="w3-container w3-third w3-left-align">
         <li>Bakid</li>
         <li>Balogo</li>
         <li>Banwague</li>
@@ -173,7 +188,7 @@ html {
         <li>Hibaiyo</li>
         <li>Hilaitan</li>        
       </ul>
-      <ul style="float:left;width:33%;text-align:left;background-color:none;">
+      <ul class="w3-container w3-third w3-left-align">
         <li>Hinakpan</li>
         <li>Humayhumay</li>
         <li>Imelda</li>
@@ -186,7 +201,7 @@ html {
         <li>Magsaysay</li>
         <li>Malusay</li>
       </ul>
-      <ul style="float:left;width:33%;text-align:left;background-color:none;">
+      <ul class="w3-container w3-third w3-left-align">
         <li>Mani-ak</li>
         <li>Padre Zamora</li>
         <li>Plagatasanon</li>
@@ -206,22 +221,22 @@ html {
   <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px;" id="tourism">
     <h2 class="w3-wide">TOURISM</h2>
     <p class="w3-opacity"><i>Tourism Industry</i></p>
-    <p>
+    <p id="dtl_tourism">
       Tourism Industry
     </p>    
   </div>
 
   <hr>
-  <div class="w3-container w3-content w3-center w3-padding-64">
+  <div class="w3-container w3-content w3-center w3-padding-64" id="latestPhotos">
     <h2 class="w3-wide">PHOTO RELEASES</h2>    
-    <div id="latestPhotos">      
+    <div id="dtl_latestPhotos">      
     </div>    
   </div>
 
   <hr>
-  <div class="w3-container w3-content w3-center w3-padding-64">
+  <div class="w3-container w3-content w3-center w3-padding-64" id="latestVideos">
     <h2 class="w3-wide">VIDEO RELEASES</h2>    
-    <div id="latestVideos">      
+    <div id="dtl_latestVideos">      
     </div>    
   </div>
 
@@ -327,17 +342,17 @@ function showLatest(){
           
           '<div class="w3-row">'+
             '<h6 class="w3-container w3-twothird w3-text-black w3-cell-bottom"><i>'+JBE_DATE_FORMAT(DB_ARTICLES[i]["date"],"MMM DD, YYYY")+'</i></h6>'+        
-            '<input type="button" class="w3-row w3-onethird w3-btn w3-purple" onclick="zoom_articles(&quot;sap&quot;,true,'+i+')" value="View"/>'+
+            '<input type="button" class="w3-row w3-onethird w3-btn w3-purple" onclick="do_zoom_articles(&quot;sap&quot;,'+i+')" value="View"/>'+
           '</div>'+
         '</div>'+
 
       '</div>';       
     }
     dtl+=dtl2+    
-  '</div>'+    
-  '<button class="w3-container w3-padding w3-center w3-btn w3-purple" onclick="showArticles()">View More</button>';
+  '</div>';
+  
 
-  document.getElementById('latest').innerHTML=dtl;
+  document.getElementById('dtl_latest').innerHTML=dtl;
 }
 
 function showLatestPhotos(){    
@@ -363,7 +378,7 @@ function showLatestPhotos(){
   '</div>'+  
   '<button class="w3-container w3-padding w3-center w3-btn w3-purple" onclick="showPhotos()">View More</button>';
 
-  document.getElementById('latestPhotos').innerHTML=dtl;
+  document.getElementById('dtl_latestPhotos').innerHTML=dtl;
 }
 
 function showLatestVideos(){    
@@ -389,7 +404,7 @@ function showLatestVideos(){
   '</div>'+
   '<button class="w3-row w3-padding w3-center w3-btn w3-purple" onclick="showVideos()">View More</button>';
 
-  document.getElementById('latestVideos').innerHTML=dtl;
+  document.getElementById('dtl_latestVideos').innerHTML=dtl;
 }
 
 function carousel() {
