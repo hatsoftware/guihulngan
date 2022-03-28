@@ -143,7 +143,6 @@ function showArticles(){
 }
 
 function do_zoom_articles(v){
-  alert(v);
   var dtl=
     '<div class="w3-container w3-padding-32">'+
       '<div id="zm_title" class="w3-row">'+DB_ARTICLES[v]['title']+'</div>'+
