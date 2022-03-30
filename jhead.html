@@ -1,0 +1,48 @@
+<div id="modalBox" class="w3-modal">
+  <div class="w3-modal-content w3-animate-zoom w3-card-4">
+    <header class="w3-container"> 
+      <span onclick="document.getElementById('modalBox').style.display='none'" 
+      class="w3-button w3-purple w3-display-topright">&times;</span>      
+    </header>
+    <div id="modalBody" class="w3-container w3-center">      
+    </div>     
+  </div>
+</div>
+<!-- SAP Page content -->
+<div id="xsap" class="w3-content" style="display:none;max-width:2000px;margin-top:50px;border:0px solid violet;">
+</div>
+<!-- Navbar -->
+<div class="w3-top" style="border:0px solid purple;">
+  <div class="w3-bar w3-white w3-card">
+    <div class="w3-left" style="width:100px;height:45px;padding:2px;text-align:center;">
+      <img src="gfx/logo.png" style="height:100%;">
+    </div>
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><img src="gfx/ham.png" style="height:20px;"/></a>
+    <a href="index.html" class="w3-bar-item w3-button w3-padding-large">Home</a>    
+    <a href="index.html#city" class="w3-bar-item w3-button w3-padding-large w3-hide-small">City Government</a>        
+    <a href="index.html#barangay" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Barangays</a>    
+    <div class="w3-dropdown-hover w3-hide-small">
+      <button class="w3-padding-large w3-button" title="Gallery">Gallery <i class="fa fa-caret-down"></i></button>     
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <a id="jeffPhoto" href="photos.html" class="w3-bar-item w3-button">Photo</a>
+        <a id="jeffVideo" href="videos.html" class="w3-bar-item w3-button">Video</a>
+      </div>
+    </div>
+    <a href="index.html#tourism" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Tourism</a>
+    <a id="mnu_articles" href="articles.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Articles</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Contact</a>
+    <!--a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a-->    
+  </div>
+</div>
+
+<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px;">  
+  <a href="index.html#city" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">City Government</a>
+  <a href="index.html#barangay" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Barangays</a>
+  <a href="javascript:showPhotos('sap')" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Gallery - Photos</a>
+  <a href="javascript:showVideos('sap')" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Gallery - Videos</a>
+  <a href="index.html#tourism" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Tourism</a>      
+  <a href="index.html#articles" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Articles</a>      
+  <a href="index.html#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Contact</a>      
+</div>
+<div style="width:100%;height:50px;"></div>

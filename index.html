@@ -1,83 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Guihulngan City | Official Website of City Government of Guihulngan, Negros Oriental</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" href="gfx/favicon.ico">
-
-<link rel="stylesheet" href="css/w3.css">
-<!--link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato"-->
-<!--link rel="stylesheet" href="css/font-awesome.min.css"-->
-<!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"-->
-
-
-<link rel="stylesheet" href="css/style.css">
-<style>
-body {font-family: "Lato", sans-serif}
-.mySlides {display: none}
-hr{
-  width:100%;height:1px;background-color:lightgray;
-}
-html {
-  scroll-behavior: smooth;
-}
-</style>
+  <title>Guihulngan City | Official Website of City Government of Guihulngan, Negros Oriental</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="gfx/favicon.ico">
+  <link rel="stylesheet" href="css/w3.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+  body {font-family: "Lato", sans-serif}
+  .mySlides {display: none}
+  hr{
+    width:100%;height:1px;background-color:lightgray;
+  }
+  /*
+  html {
+    scroll-behavior: smooth;
+  }
+  */
+  </style>
 </head>
 <body>
 
-<!-- Navbar -->
-<div class="w3-top" style="border:0px solid purple;">
-  <div class="w3-bar w3-white w3-card">
-    <div class="w3-left" style="width:100px;height:45px;padding:2px;text-align:center;">
-      <img src="gfx/logo.png" style="height:100%;">
-    </div>
-    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><img src="gfx/ham.png" style="height:20px;"/></a>
-    <a href="javascript:gotoDiv('wrapper')" class="w3-bar-item w3-button w3-padding-large">Home</a>    
-    <a href="javascript:gotoDiv('city')" class="w3-bar-item w3-button w3-padding-large w3-hide-small">City Government</a>        
-    <a href="javascript:gotoDiv('barangay')" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Barangays</a>    
-    <div class="w3-dropdown-hover w3-hide-small">
-      <button class="w3-padding-large w3-button" title="Gallery">Gallery <i class="fa fa-caret-down"></i></button>     
-      <div class="w3-dropdown-content w3-bar-block w3-card-4">
-        <a id="jeffPhoto" href="javascript:showPhotos('sap')" class="w3-bar-item w3-button">Photo</a>
-        <a id="jeffVideo" href="javascript:showVideos('sap')" class="w3-bar-item w3-button">Video</a>
-      </div>
-    </div>
-    <a href="javascript:gotoDiv('tourism')" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Tourism</a>
-    <a href="javascript:showArticles('sap')" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Articles</a>
-    <a href="javascript:gotoDiv('contact')" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Contact</a>
-    
-    <!--a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a-->
-    
-  </div>
-</div>
-
-<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
-<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px;">  
-  <a href="javascript:gotoDiv('city')" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">City Government</a>
-  <a href="javascript:gotoDiv('barangay')" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Barangays</a>
-  <a href="javascript:showPhotos('sap')" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Gallery - Photos</a>
-  <a href="javascript:showVideos('sap')" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Gallery - Videos</a>
-  <a href="javascript:gotoDiv('tourism')" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Tourism</a>    
-</div>
-
-<div id="modalBox" class="w3-modal">
-  <div class="w3-modal-content w3-animate-zoom w3-card-4">
-    <header class="w3-container"> 
-      <span onclick="document.getElementById('modalBox').style.display='none'" 
-      class="w3-button w3-purple w3-display-topright">&times;</span>      
-    </header>
-    <div id="modalBody" class="w3-container w3-center">      
-    </div>     
-  </div>
-</div>
-
-<!-- SAP Page content -->
-<div id="sap" class="w3-content" style="display:none;max-width:2000px;margin-top:50px;border:0px solid violet;">
-</div>
+<div JBE-INCLUDE-HTML="jhead.html"></div> 
 
 <!-- Page content -->
-<div id="wrapper" class="w3-content" style="max-width:2000px;margin-top:46px;">
+<div id="wrapper" class="w3-content" style="max-width:2000px;margin-top:0px;">
   <div style="max-width:100%;position:relative;">
 
     <!-- Automatic Slideshow Images -->
@@ -110,9 +59,9 @@ html {
 
   <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:100%;" id="latest">
     <h2 class="w3-wide">LATEST ARTICLES</h2>    
-    <div id="dtl_latest">      
+    <div id="dtl_articles">      
     </div>    
-    <button class="w3-row w3-padding w3-center w3-btn w3-purple" onclick="showArticles()">View More</button>
+    <a href="articles.html" class="w3-container w3-padding w3-center w3-btn w3-purple">View More</a>      
   </div>
   
   <!-- Happenings -->
@@ -237,186 +186,33 @@ html {
     </p>    
   </div>
 
-  <hr>
+  <hr>  
   <div class="w3-container w3-content w3-center w3-padding-64" id="latestPhotos">
     <h2 class="w3-wide">PHOTO RELEASES</h2>    
-    <div id="dtl_latestPhotos">      
+    <div id="dtl_photos">      
     </div>    
+    <a href="photos.html" class="w3-container w3-padding w3-center w3-btn w3-purple">View More</a>  
   </div>
 
   <hr>
   <div class="w3-container w3-content w3-center w3-padding-64" id="latestVideos">
     <h2 class="w3-wide">VIDEO RELEASES</h2>    
-    <div id="dtl_latestVideos">      
+    <div id="dtl_videos">      
     </div>    
+    <a href="videos.html" class="w3-container w3-padding w3-center w3-btn w3-purple">View More</a>  
   </div>
 
 </div>
-  
-
-
 <!-- End Page Content -->
 
-
-<!-- Footer -->
-
-<footer>  
-
-  <div id="contact" class="w3-container w3-light-grey" style="border:0px solid black;">
-    
-    <div class="w3-container w3-padding-32" style="margin:auto;max-width:1100px;border:0px solid green;">
-
-      <div class="w3-container w3-half w3-left w3-center" style="border:0px solid red;">
-
-        <div  class="w3-container">
-          <div class="w3-row">Follow Us:</div>
-          <div class="w3-row">
-            <!-- FACEBOOK -->
-            <span class="je-icon">
-              <a href="https://facebook.com/lguguihulngancity" target="_blank">            
-                <img src="gfx/fb.png"/>            
-              </a>
-            </span>
-            <!-- TWITTER -->
-            <span class="je-icon">
-              <!--a href="javascript:void(0)" target="_blank"-->
-                <img src="gfx/tw.png"/>            
-              <!--/a-->
-            </span>
-            <!-- INSTAGRAM -->
-            <span class="je-icon">
-              <a href="https://www.instagram.com/explore/tags/guihulngan/?hl=en" target="_blank">            
-                <img src="gfx/ig.png"/>            
-              </a>
-            </span>
-            <!-- YOUTUBE -->
-            <span class="je-icon">
-              <a href="https://www.youtube.com/watch?v=7n-rugwhI00" target="_blank">            
-                <img src="gfx/yt.png"/>            
-              </a>
-            </span>
-          </div>
-        </div>
-
-        <div class="w3-container w3-padding-32">
-          <img src="gfx/logo.png" class="w3-margin-bottom" alt="Random Name" style="height: 200px;">      
-          <div class="w3-row">City Government of Guihulngan</div>
-        </div>
-        
-      </div>
-      
-
-      <div class="w3-container w3-half w3-right" style="padding:0 0 0 10%;border:0px solid violet;">      
-        
-          <div class="w3-container w3-large">
-            Guihulngan City, Negros Oriental PH<br>
-            Phone:<br>
-            Email: lgu.guihulngan.city@gmail.com<br>
-          </div>        
-        
-      </div>
-
-    </div>
-  </div>
-  
-  
-
-  <div class="w3-row w3-medium w3-center w3-padding w3-gray">Powered by <a href="https://hatsoftware.github.io" style="text-decoration:none;color:red;font-weight:bold;" target="_blank">
-    Hatsoftware Development Services</a>
-  </div>
-</footer>
+<div JBE-INCLUDE-HTML="jfoot.html"></div>
 
 <script type='text/javascript' src='js/enadlib.js'></script>
 <script type='text/javascript' src='jmain.js'></script>
 
 <script>  
 
-function showLatest(){  
-  DB_ARTICLES.sort(sortByMultipleKey(['*date']));  
-  var dtl=
-  //'<div class="w3-container w3-content w3-center w3-padding-32">'+
-  '<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:1090px;border:0px solid yellow;">'+
-    
-    '<div class="w3-justify">';
-    var dtl2='';
-    var ctr=3;
-    if(DB_ARTICLES.length < ctr){ ctr=DB_ARTICLES.length; }
-    for(var i=0;i<ctr;i++){      
-      dtl2+=
-      '<div class="w3-container w3-third w3-margin-top" style="border:0px solid red;height:330px;">'+
-
-        '<div class="w3-container w3-card-4 w3-padding-16">'+
-          '<div class="w3-row">'+DB_ARTICLES[i]['title']+'</div>'+          
-          '<img class="w3-border w3-padding-12" width="100%" height="150px"'+
-            'src="'+DB_ARTICLES[i]['pic']+'"/>'+ 
-          '<div class="w3-row">'+DB_ARTICLES[i]['story']+'</div>'+        
-          
-          '<div class="w3-row">'+
-            '<h6 class="w3-container w3-twothird w3-text-black w3-cell-bottom"><i>'+JBE_DATE_FORMAT(DB_ARTICLES[i]["date"],"MMM DD, YYYY")+'</i></h6>'+        
-            '<input type="button" class="w3-row w3-onethird w3-btn w3-purple" onclick="do_zoom_articles('+i+')" value="View"/>'+
-          '</div>'+
-        '</div>'+
-
-      '</div>';       
-    }
-    dtl+=dtl2+    
-  '</div>';
-  
-
-  document.getElementById('dtl_latest').innerHTML=dtl;
-}
-
-function showLatestPhotos(){    
-  var dtl=
-  '<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:1090px;border:0px solid yellow;">'+
-     
-    '<div class="w3-justify">';
-    var dtl2='';
-    var ctr=3;
-    if(DB_PHOTOS.length < ctr){ ctr=DB_PHOTOS.length; }
-    for(var i=0;i<ctr;i++){
-      dtl2+=
-      '<div class="w3-container w3-third" style="border:0px solid red;height:330px;">'+
-      '<div class="w3-container w3-card-4 w3-padding-16">'+
-          '<img onclick="do_zoom_photos('+i+')" style="cursor:zoom-in;" width="100%" height="200px"'+
-            'src="'+DB_PHOTOS[i]['pic']+'"'+
-          '/>'+ 
-          '<span>'+DB_PHOTOS[i]['descrp']+'</span>'+
-        '</div>'+
-      '</div>';        
-    }
-    dtl+=dtl2+
-  '</div>'+  
-  '<button class="w3-container w3-padding w3-center w3-btn w3-purple" onclick="showPhotos()">View More</button>';
-
-  document.getElementById('dtl_latestPhotos').innerHTML=dtl;
-}
-
-function showLatestVideos(){    
-  var dtl=
-  '<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:1090px;border:0px solid yellow;">'+
-    
-    '<div class="w3-justify">';
-    var dtl2='';
-    var ctr=2;
-    if(DB_VIDEOS.length < ctr){ ctr=DB_VIDEOS.length; }
-    for(var i=0;i<ctr;i++){
-      dtl2+=
-      '<div class="w3-container w3-half w3-margin-top" style="border:0px solid red;height:330px;">'+
-        '<div class="w3-container w3-card-4 w3-padding-16">'+
-          '<iframe width="100%" height="200px"'+
-            'src="'+DB_VIDEOS[i]['link']+'">'+
-          '</iframe>'+ 
-          '<span>'+DB_VIDEOS[i]['descrp']+'</span>'+
-        '</div>'+
-      '</div>';        
-    }
-    dtl+=dtl2+
-  '</div>'+
-  '<button class="w3-row w3-padding w3-center w3-btn w3-purple" onclick="showVideos()">View More</button>';
-
-  document.getElementById('dtl_latestVideos').innerHTML=dtl;
-}
+JBE_INCLUDE_HTML();
 
 function carousel() {
   var i;
@@ -430,17 +226,6 @@ function carousel() {
   setTimeout(carousel, 9000);    
 }
 
-// Used to toggle the menu on small screens when clicking on the menu button
-function myFunction() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-
-
 // Automatic Slideshow - change image every 4 seconds
 var myIndex = 0;
 carousel();
@@ -453,9 +238,9 @@ window.onclick = function(event) {
   }
 }
 
-showLatest();
-showLatestPhotos();
-showLatestVideos();
+showArticles(3);
+showPhotos(3);
+showVideos(2);
 </script>
 
 </body>

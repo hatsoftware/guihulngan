@@ -8,12 +8,12 @@ var DB_VIDEOS=[
 ];
 
 var DB_PHOTOS=[
-  { "pic":"photos/fireworks.jpg","descrp":"Guihulngan City fireworks" },
-  { "pic":"photos/sinulog.jpg","descrp":"Sinulog in Guihulngan City" },
-  { "pic":"photos/carabell.jpg","descrp":"Carabell Football Club" },
-  { "pic":"photos/fireworks.jpg","descrp":"Guihulngan City fireworks" },
-  { "pic":"photos/sinulog.jpg","descrp":"Sinulog in Guihulngan City" },
-  { "pic":"photos/carabell.jpg","descrp":"Carabell Football Club" }
+  { "pic":"photos/fireworks.jpg","descrp":"Guihulngan City fireworks","date":"2022-01-20" },
+  { "pic":"photos/sinulog.jpg","descrp":"Sinulog in Guihulngan City","date":"2022-01-20" },
+  { "pic":"photos/carabell.jpg","descrp":"Carabell Football Club","date":"2022-01-20" },
+  { "pic":"photos/fireworks.jpg","descrp":"Guihulngan City fireworks","date":"2022-01-20" },
+  { "pic":"photos/sinulog.jpg","descrp":"Sinulog in Guihulngan City","date":"2022-01-20" },
+  { "pic":"photos/carabell.jpg","descrp":"Carabell Football Club","date":"2022-01-20" }
 ];
 
 var DB_ARTICLES=[
@@ -26,90 +26,31 @@ var DB_ARTICLES=[
   { "title":"Article 6","pic":"photos/fireworks.jpg","story":"Article 6 story","date":"2022-01-20" }
 ];
 
-function gotoDiv(d) {
-  var disp1='block';
-  var disp2='none';
-  if(d=='sap'){
-    disp1='none';
-    disp2='block';
-  }else{
-    var iframe = document.querySelector('iframe');	
-    if(iframe) {
-      //alert('found iframe');
-      document.getElementById('sap').innerHTML='';
-      document.getElementById('wrapper').style.display='block';
-    }
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
   }
-  
-  document.getElementById('wrapper').style.display=disp1;
-  document.getElementById('sap').style.display=disp2;
-  var elmnt = document.getElementById(d);
-  elmnt.scrollIntoView();
 }
 
-function showVideos(d){
-  document.getElementById('wrapper').style.display='none';
-  document.getElementById('sap').style.display='block';
-  var dtl=
-  '<div id="jvideos" class="w3-container w3-content w3-center w3-padding-64" style="max-width:1090px;border:0px solid blue;">'+
-    '<h2 class="w3-wide">VIDEOS</h2>'+    
-    '<div class="w3-justify">';
-    var dtl2='';
-    for(var i=0;i<DB_VIDEOS.length;i++){
-      dtl2+=
-      '<div class="w3-container w3-third w3-margin-top" style="border:0px solid red;height:330px;">'+
-        '<div class="w3-container w3-card-4 w3-padding-16">'+
-          '<iframe width="100%" height="200px"'+
-            'src="'+DB_VIDEOS[i]['link']+'">'+
-          '</iframe>'+ 
-          '<span>'+DB_VIDEOS[i]['descrp']+'</span>'+
-        '</div>'+
-      '</div>';      
-    }
-    dtl+=dtl2+
-  '</div>'+
-  '<button class="w3-container w3-padding w3-center w3-btn w3-purple" onclick="gotoDiv(&quot;latestVideos&quot;)">Back</button>';
-  document.getElementById('sap').innerHTML=dtl;
-  gotoDiv('sap');
-}
 
-function showPhotos(){
-  document.getElementById('wrapper').style.display='none';
-  document.getElementById('sap').style.display='block';
-  var dtl=
-  '<div id="jphotos" class="w3-container w3-content w3-center w3-padding-64" style="max-width:1090px;border:0px solid yellow;">'+
-    '<h2 class="w3-wide">PHOTOS</h2>'+    
-    '<div class="w3-justify">';
-    var dtl2='';
-    for(var i=0;i<DB_PHOTOS.length;i++){
-      dtl2+=
-      '<div class="w3-container w3-third w3-margin-top" style="border:0px solid red;height:330px;">'+
-      '<div class="w3-container w3-card-4 w3-padding-16">'+
-          '<img onclick="do_zoom_photos('+i+')" style="cursor:zoom-in;" width="100%" height="200px"'+
-            'src="'+DB_PHOTOS[i]['pic']+'"'+
-          '/>'+ 
-          '<span>'+DB_PHOTOS[i]['descrp']+'</span>'+
-        '</div>'+
-      '</div>';        
-    }
-    dtl+=dtl2+
-  '</div>'+
-  '<button class="w3-container w3-padding w3-center w3-btn w3-purple" onclick="gotoDiv(&quot;latestPhotos&quot;)">Back</button>';
 
-  document.getElementById('sap').innerHTML=dtl;
-  gotoDiv('sap');
-}
 
-function showArticles(){
+
+function showArticles(ctr){
+  if(ctr==0){ ctr=DB_ARTICLES.length; }
   DB_ARTICLES.sort(sortByMultipleKey(['*date']));
-  document.getElementById('wrapper').style.display='none';
-  document.getElementById('sap').style.display='block';
+  //document.getElementById('wrapper').style.display='none';
+  //document.getElementById('sap').style.display='block';
   var dtl=
   '<div id="div_articles" class="w3-container w3-content w3-center w3-padding-32">'+
     '<h2 class="w3-wide">ARTICLES</h2>'+    
     '<div class="w3-justify">';
-    var dtl2='';
-    for(var i=0;i<DB_ARTICLES.length;i++){      
+    var dtl2='';    
+    for(var i=0;i<ctr;i++){      
 
       dtl2+=
       '<div id="dv_articles" class="w3-container w3-third w3-margin-top" style="border:0px solid red;height:330px;">'+
@@ -130,16 +71,61 @@ function showArticles(){
       '</div>';       
     }
     dtl+=dtl2+
-    '</div>'+
-    '<button class="w3-container w3-padding w3-center w3-btn w3-purple" onclick="gotoDiv(&quot;latest&quot;)">Back</button>'+
-  '</div>'+
-  
-
-  '<div id="div_zoom_articles" class="w3-container w3-content w3-center w3-padding-32" style="min-height:600px;display:none;">'+
+    '</div>'+      
   '</div>';
+  document.getElementById('dtl_articles').innerHTML=dtl;  
+}
 
-  document.getElementById('sap').innerHTML=dtl;  
-  gotoDiv('sap');
+function showPhotos(ctr){
+  if(ctr==0){ ctr=DB_PHOTOS.length; }
+  //document.getElementById('wrapper').style.display='none';
+  //document.getElementById('sap').style.display='block';
+  var dtl=
+  '<div id="jphotos" class="w3-container w3-content w3-center w3-padding-64" style="max-width:1090px;border:0px solid yellow;">'+
+    '<h2 class="w3-wide">PHOTOS</h2>'+    
+    '<div class="w3-justify">';
+    var dtl2='';
+    for(var i=0;i<ctr;i++){
+      dtl2+=
+      '<div class="w3-container w3-third w3-margin-top" style="border:0px solid red;height:330px;">'+
+        '<div class="w3-container w3-card-4 w3-padding-16">'+
+            '<img onclick="do_zoom_photos('+i+')" style="cursor:zoom-in;" width="100%" height="200px"'+
+              'src="'+DB_PHOTOS[i]['pic']+'"'+
+            '/>'+ 
+            '<span>'+DB_PHOTOS[i]['descrp']+'</span>'+
+        '</div>'+
+      '</div>';        
+    }
+    dtl+=dtl2+
+    '</div>'+    
+  '</div>';
+  document.getElementById('dtl_photos').innerHTML=dtl;
+}
+
+function showVideos(ctr){
+  var w3_div='w3-half';
+  if(ctr==0){ ctr=DB_VIDEOS.length; w3_div='w3-third'; }  
+  //alert(w3_div);
+  var dtl=
+  '<div id="jvideos" class="w3-container w3-content w3-center w3-padding-64" style="max-width:1090px;border:0px solid blue;">'+
+    '<h2 class="w3-wide">VIDEOS</h2>'+    
+    '<div class="w3-justify">';
+    var dtl2='';
+    for(var i=0;i<ctr;i++){
+      dtl2+=
+      '<div class="w3-container '+w3_div+' w3-margin-top" style="border:0px solid red;height:330px;">'+
+        '<div class="w3-container w3-card-4 w3-padding-16">'+
+          '<iframe width="100%" height="200px"'+
+            'src="'+DB_VIDEOS[i]['link']+'">'+
+          '</iframe>'+ 
+          '<span>'+DB_VIDEOS[i]['descrp']+'</span>'+
+        '</div>'+
+      '</div>';      
+    }
+    dtl+=dtl2+
+    '</div>'+
+  '</div>';  
+  document.getElementById('dtl_videos').innerHTML=dtl;
 }
 
 function do_zoom_articles(v){
@@ -173,31 +159,6 @@ function DO_ZOOM(dtl){
   document.getElementById('modalBox').style.display='block';
 }
 
-function xxxdo_zoom_articles(div,v){
-  var dtl=
-    '<div class="w3-container w3-card-4 w3-padding-32">'+
-      '<div id="zm_title" class="w3-row">'+DB_ARTICLES[v]['title']+'</div>'+
-      '<img id="zm_img" src="'+DB_ARTICLES[v]['pic']+'" class="w3-image"/>'+ 
-      '<div id="zm_story" class="w3-panel" style="text-align:left;">'+DB_ARTICLES[v]['story']+'</div>'+        
-      '<div class="w3-container w3-center">'+
-        '<input type="button" class="w3-btn w3-purple" onclick="close_zoom_articles(&quot;'+div+'&quot;)" value="Back"/>'+
-      '</div>'+
-    '</div>';
-
-  if(div=='sap'){
-    //document.getElementById('wrapper').style.display='none';
-    //document.getElementById('sap').style.display='block';
-    var ddtl=
-      '<div class="w3-container w3-content w3-center w3-padding-32" style="min-height:600px;display:block;">'+
-      dtl+'</div>';
-    document.getElementById('sap').innerHTML=ddtl;  
-    gotoDiv('sap');
-  }else{
-    document.getElementById('div_articles').style.display='none';
-    document.getElementById('div_zoom_articles').style.display='block';
-    document.getElementById(div).innerHTML=dtl;
-  } 
-}
 function close_zoom_articles(div){
   if(div=='sap'){
     //document.getElementById('wrapper').style.display='block';
