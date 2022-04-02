@@ -59,7 +59,7 @@ function get_db(){
     dispArticles(3);
     //dispHappenings();
     dispPhotos(3);
-    //dispVideos(2);
+    dispVideos(2);
   })    
   .catch(function (err) {    
     console.log(err);
