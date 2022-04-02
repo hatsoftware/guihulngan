@@ -747,5 +747,9 @@ function JBE_INCLUDE_HTML() {
   }
 }
 
+function JBE_MSG(){
+  
+}
+
 var JBE_COLORHEX = x => '#' + x.match(/\d+/g).map(y = z => ((+z < 16)?'0':'') + (+z).toString(16)).join('');
 //enad
