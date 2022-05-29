@@ -1,0 +1,205 @@
+.modal {
+  display:none;
+  position: fixed;
+  z-index: 1100;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content{
+  background-color: #f4f4f4;  
+  /* margin: 30% auto;  */
+  width: 500px;  
+  box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);  
+  color:black; font-size:14px;font-weight:normal;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.modal-header h1, .modal-footer h2 {
+  margin:0;
+}
+.modal-header{
+  background: #3b5998;
+  padding: 10px;
+  color: #fff;  
+}
+.modal-body{
+  padding: 10px 20px; 
+}
+.modal-footer{
+  background: #3b5998;
+  padding: 5px;
+  color: #fff;
+  height: 15px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.closeBtn{
+  color: #ccc;
+  float:right;
+  font-size: 20px; font-weight: bold;
+  color:#fff;
+}
+
+.row_projbox{
+  margin-top:6%; margin-bottom:6%;
+  height:800px;width:80%;margin-left:10%;margin-right:10%;padding:10px;margin-top:0px;background:white;
+  border:0px solid green;
+}
+
+.col_projbox {    
+  position: relative;
+  float:left;width:31.33%;height:46.5%;margin:1%;padding:0px;border:0px solid black;background:none; box-shadow: 0px 0px 1px; background-color: whitesmoke;
+  border:0px solid yellow;
+}
+
+.class_tilt_div{
+  height:10%;font-size:22px;font-weight:bold;color:black;padding: 5px;
+}
+.class_div1 {
+  width: 100%;
+  height: 90%;  
+  
+  padding:2px;display: flex; align-items: center;
+  justify-content: center;  
+  border:0px solid #F0F0F0;
+  border:0px solid red;
+}
+
+.class_div2 {  
+  position :absolute;
+  background-color: white;
+  top: -3px;
+  top:0px;
+  top:20%;
+  
+  /*
+  z-index: 5;
+  border-bottom: 2px solid white;
+  border-top: 2px solid white;
+  */  
+  width: 100%;  
+  margin: auto;  
+  transition: 0.5s;  
+  padding-top: 0px;    
+  overflow: hidden;
+  opacity:1;
+  height:0px;
+  bottom: 0px; 
+}
+
+.class_div1:hover + .class_div2 {    
+  border-top: none;
+  top: 10%;
+  height: 90%;
+}
+
+.class_div1_img{
+  width:auto;max-width:100%;height:100%;max-height:100%;
+}
+
+.class_div2:hover {
+  top: 10%;
+  height: 90%;     
+}
+/********div2 box***********/
+.class_div2_box{
+  margin-top: 0;
+  width:100%;height:100%;text-align: center;
+  background:none; border:0px solid violet;
+}
+    .class_div2_box div{      
+      margin-top:0px;
+      font-size:33px;
+      width:100%;height:auto;      
+      color:black; font-weight: bold;
+      background:none;
+    }
+    .class_div2_box h5{    
+      margin:0;
+      width:100%;height:auto;  
+      font-size:18px;
+      color:#3396FF;
+      margin-top:0px;
+      background:none;
+    }
+    .class_div2_box h6 {    
+      margin:0;
+      margin-top:40px;
+      width:100%;height:60px;  
+      padding:5px;
+      font-size:18px; font-weight:normal;
+      color:black;
+      background:none;
+    }
+    .class_div2_box h4{  
+      margin:0;
+      margin-top:20px;      
+      margin-left:20%; margin-right:20%;
+      width:60%;
+      height:auto;    
+      color:#3396FF;
+      border:2px solid #3396FF;
+      padding:10px; font-size: 20px;
+      cursor: pointer;
+      background: none;
+    }
+
+    .class_div2_box h4:hover {        
+      color:white;      
+      background: #3396FF;
+    }
+
+
+/********class view***********/
+
+@media screen and (max-width: 600px) {  
+  .col_projbox {       
+    width:50%;height:33.33%;
+  }
+  .row_projbox{    
+    height:300px;width:90%;margin-left:5%;margin-right:5%;padding:0px;margin-top:0px;background:white;
+  }
+
+  .class_div2_box div{      
+    margin-top:5px;
+    font-size:12px;
+    width:100%;height:auto;      
+    color:black; font-weight: bold;
+  }
+  .class_div2_box h5{    
+    margin:0;
+    width:100%;height:10px;  
+    font-size:11px;
+    color:#3396FF;
+    margin-top:0px;    
+    background:none;
+  }
+  .class_div2_box h6 {   
+    margin:0;
+    margin-top:11px;
+    width:100%;height:35px;          
+    padding:1px;
+    font-size:10px; font-weight:normal;    
+    overflow: auto;
+    color:black;    
+    background: none;
+  }
+  .class_div2_box h4{  
+    margin:0;
+    margin-top:2px;
+    margin-left:20%; margin-right:20%;
+    width:60%;height:20px;        
+    border:2px solid #3396FF;
+    padding:1px; font-size: 12px;
+  }
+}
