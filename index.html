@@ -6,10 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="gfx/favicon.ico">
 
+<!--link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="mobile.css"-->
+
+<link rel="stylesheet" href="css/j1.css">
 <link rel="stylesheet" href="css/w3.css">
 <!--link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato"-->
 <!--link rel="stylesheet" href="css/font-awesome.min.css"-->
 <!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"-->
+
 
 
 <link rel="stylesheet" href="css/style.css">
@@ -17,6 +22,10 @@
 
 body {font-family: "Lato", sans-serif}
 .mySlides {display: none}
+.xmySlides {display:none}
+.w3-left, .w3-right, .w3-badge {cursor:pointer}
+.w3-badge {height:13px;width:13px;padding:0}
+
 hr{
   width:100%;height:1px;background-color:lightgray;
 }
@@ -72,7 +81,7 @@ html {
 
 <script>  
   var JBE_API=window.location.origin+'/guihulngan_api/'; //development
-  JBE_API='https://aidfimonitoring.com/guihulngan_api/'; //production
+  //JBE_API='https://aidfimonitoring.com/guihulngan_api/'; //production
   //alert(JBE_API);
   var JBE_SITE=window.location.pathname; //.slice(0, -1);    
   const JBE_HEADER = {
@@ -84,6 +93,42 @@ html {
 </head>
 <body>
 <div id="snackbar"></div>
+
+<!--************************* blocker-->
+<div id="je_msg" tabindex="0" data-rval="SAGBAYAN" class="modal" style="display:none;" onkeydown="javascript:if(event.keyCode==27) closeModal()">
+  <div class="modal-content" style="border:1px solid black;">
+    <div id="modal-header" class="modal-header head_color">
+      <!--span class="closeBtn" onclick="closeModal()">&times;</span-->
+      <span id="DivPrompt">
+        <h1>Modal Header</h1>
+      </span>				
+    </div>
+    <div id="modal-body" class="modal-body" style="background:lightgrey;">
+      <div id="msgBody">        
+      </div>	
+      <div style="height:auto;text-align:center;margin-top:5px;background:none;">
+        <div id="msgDivPrompt" style="display:none;margin-bottom:5px;">
+          <input class="je_msg_btn" type="text" id="txtPrompt" onkeydown="javascript:if(event.keyCode==13) MSG_CLICK(1)" style="width:40%;height:20px;border:1px solid black;text-align:center;" value="" />
+        </div>
+        <div id="msgDivOk" style="display:none;">
+          <!--input type="button" onclick="closeModal()" class="button" value="OK" /-->
+          <input type="text" id="txOk" style="display:none;width:100px;"/>
+          <input class="je_msg_btn" type="button" id="btnOk" onclick="MSG_CLICK(1)" onkeydown="javascript:if(event.keyCode==13) MSG_CLICK(1)" value="OK" />
+        </div>
+        <div id="msgDivYesNo" style="display:none;">
+          <input class="je_msg_btn" type="button" id="btnYes" onclick="MSG_CLICK(1)" value="Yes" />
+          <input class="je_msg_btn" type="button" id="btnNo"  onclick="MSG_CLICK(2)" value="No" style="margin-left: 2%;" />
+        </div>
+      </div>				
+    </div>
+    <div id="div_jelo" class="modal-footer head_color" style="color:white;text-align:right;height:auto;">
+      HAT Software Dialog Ver 1.01 (c) 2018
+    </div>
+  </div>	
+</div>  
+
+<!--################################################################################################################ -->
+
 
 <div id="JBE_MODAL" style="z-index:9000;" class="w3-modal">
   <div id="JBE_MODAL_DTL">    
@@ -101,28 +146,30 @@ html {
 </div>
 <!-- *************************PAGES*************************************************** -->
 <!-- Navbar -->
-<div class="w3-top" style="border:0px solid purple;">
-  <div class="w3-bar w3-white w3-card">
-    <div class="w3-left" style="width:100px;height:45px;padding:2px;text-align:center;">
-      <a href="javascript:gotoDiv_Home('wrapper')">
-        <img class="w3-image" src="gfx/logo.png" style="height:100%;">
-      </a>
+<div class="w3-top" style="border:0px solid purple;z-index:10;">
+  <div class="w3-bar w3-white w3-card w3-center">
+
+    <div class="w3-left" style="width:200px;height:45px;padding:2px;text-align:center;">
+      <a href="#home" style="text-decoration:none;font-weight:bold;">
+        <img class="w3-image" src="gfx/logo.png" style="height:100%;">        
+        <span>Guihulngan City</span>
+      </a>      
     </div>
     <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><img src="gfx/ham.png" style="height:20px;"/></a>
-    <a href="javascript:gotoDiv_Home('wrapper')" class="w3-bar-item w3-button w3-padding-large">Home</a>    
+    <a href="#home" class="w3-bar-item w3-button w3-padding-large">Home</a>    
     
     <div class="w3-dropdown-hover w3-hide-small">
-      <button class="w3-padding-large w3-button" title="Government">About Guihulngan <i class="fa fa-caret-down"></i></button>     
+      <button class="w3-padding-large w3-button" title="Government">About Guihulngan <span class="caret">&#9660;</span></button>     
       <div class="w3-dropdown-content w3-bar-block w3-card-4">        
-        <a href="javascript:showPhotos()" class="w3-bar-item w3-button">Quick Facts</a>
-        <a href="javascript:showVideos()" class="w3-bar-item w3-button">History</a>
-        <a href="javascript:showVideos()" class="w3-bar-item w3-button">City Profile</a>
-        <a href="javascript:showVideos()" class="w3-bar-item w3-button">Official Seals</a>
+        <a href="javascript:showQuickFacts()" class="w3-bar-item w3-button">Quick Facts</a>
+        <a href="javascript:showHistory()" class="w3-bar-item w3-button">History</a>
+        <a href="javascript:showCityProfile()" class="w3-bar-item w3-button">City Profile</a>
+        <a href="javascript:showOfficialSeals()" class="w3-bar-item w3-button">Official Seals</a>
       </div>
     </div>
 
     <div class="w3-dropdown-hover w3-hide-small">
-      <button class="w3-padding-large w3-button" title="Government">City Government <i class="fa fa-caret-down"></i></button>     
+      <button class="w3-padding-large w3-button" title="Government">City Government <span class="caret">&#9660;</span></button>     
       <div class="w3-dropdown-content w3-bar-block w3-card-4">        
         <a href="javascript:showOfficials()" class="w3-bar-item w3-button">Officials</a>
         <a href="javascript:showVideos()" class="w3-bar-item w3-button">Department</a>
@@ -131,15 +178,15 @@ html {
       </div>
     </div>
 
-    <a href="javascript:gotoDiv_Page('barangay')" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Barangays</a>    
     <div class="w3-dropdown-hover w3-hide-small">
-      <button class="w3-padding-large w3-button" title="Gallery">Gallery <i class="fa fa-caret-down"></i></button>     
+      <button class="w3-padding-large w3-button" title="Gallery">Gallery  <span class="caret">&#9660;</span></button>     
       <div class="w3-dropdown-content w3-bar-block w3-card-4">
         <!--a id="jeffPhoto" href="javascript:showPhotos('sap')" class="w3-bar-item w3-button">Photo</a-->
         <a id="jeffPhoto" href="javascript:showPhotos()" class="w3-bar-item w3-button">Photo</a>
         <a id="jeffVideo" href="javascript:showVideos()" class="w3-bar-item w3-button">Video</a>
       </div>
     </div>
+    
     <a href="javascript:gotoDiv_Page('tourism')" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Tourism</a>
     <a href="javascript:gotoDiv_Page('articles')" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Articles</a>
     <a href="javascript:gotoDiv_Page('contact')" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Contact Us</a>    
@@ -163,83 +210,164 @@ html {
   
 </div>
 
+
+<div id="home" style="width:100%;height:auto;margin-top:48px;border:0px solid pink;">  
+
+  <div style="height:150px;padding:10px 100px 10px 100px;background-color:lightgray;">
+
+    <div style="float:left;height:100%;margin-right: 20px;">
+      <img class="w3-image" src="gfx/logo.png" style="height:100%;">     
+    </div>
+
+    <div style="float:left;height:100%;background-color: none;">      
+      <div style="font-size:12px;margin-top:25px;">Republic of the Philippines</div>
+      <div style="height:2px;margin-top:5px;background-color:black;"></div>
+      <div style="font-size:22px;">The City Government of Guihulngan</div>
+      <div style="font-size:12px;">Official Website</div>
+    </div>
+
+  </div>
+  
+  <div class="w3-light-grey" style="width:100%;height:600px;border:0px solid red;">
+    <div class="w3-container w3-content w3-center w3-padding-32" id="happenings">          
+      <div id="dtl_slides" class="w3-content w3-display-container j3-happenings" style="border:1px solid lightgray;">
+        <img class="mySlides w3-animate-fading" src="photos/slides/xmain0.jpg" style="width:100%;height:100%;">
+        <img class="mySlides w3-animate-fading" src="photos/slides/xmain1.jpg" style="width:100%;height:100%;">
+        <img class="mySlides w3-animate-fading" src="photos/slides/xmain2.jpg" style="width:100%;height:100%;">
+        <img class="mySlides w3-animate-fading" src="photos/slides/sinulog.jpg" style="width:100%;height:100%;">
+        <img class="mySlides w3-animate-fading" src="photos/slides/carabell.jpg" style="width:100%;height:100%;">
+        <img class="mySlides w3-animate-fading" src="photos/slides/fireworks.jpg" style="width:100%;height:100%;">
+        <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%;">
+          <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
+          <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
+          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(4)"></span>
+          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(5)"></span>
+          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(6)"></span>
+        </div>
+      </div>  
+    </div>
+  </div>
+
+  <div class="row_projbox">
+
+    <div class="col_projbox">
+      <div class="class_tilt_div">All Inbound Travelers</div>
+      <div class="class_div1"><img id="img1" src="photos/hdf.jpg" class="class_div1_img" alt="aidfi img"/></div>
+      <div class="class_div2">
+        <div class="class_div2_box">
+          <div style="font-size:16px;padding:20px 0 0 0;">
+            All inbound travelers shall register online at https://hdf.baguio.gov.ph/ and upload documentray requirements as listed in the new advisory. (See advisory)
+          </div>                      
+          <h4 onclick="show_proj(img1.src,'Created in 1995, this software was used by Chonlin Corp. and Sheridan Marketing Inc. for their Receivables and Inventory requirements.',
+              '')">Online Registration Form</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col_projbox">        
+      <div class="class_tilt_div">For Tourist</div>
+      <div class="class_div1"><img id="img2" src="photos/visita.jpg" class="class_div1_img"  alt="aidfi img"/></div>
+      <div class="class_div2">
+        <div class="class_div2_box">
+          <div style="font-size:16px;padding:20px 0 0 0;">
+            For non-residents who wish to come and visit Baguio for leisure purposes, please register to our Visitor Information and Travel Assistance (VISITA)
+          </div>                      
+          <h4 onclick="show_proj(img1.src,'Created in 1995, this software was used by Chonlin Corp. and Sheridan Marketing Inc. for their Receivables and Inventory requirements.',
+              '')">Schedule a Visit</h4>
+        </div>
+      </div>      
+    </div>    
+    <div class="col_projbox">   
+      <div class="class_tilt_div">COVID-19 Monitoring</div>     
+      <div class="class_div1"><img id="img4" src="photos/monitoring.jpg" class="class_div1_img" alt="aidfi img"/></div>
+      <div class="class_div2">
+        <div class="class_div2_box">
+          <div style="font-size:16px;padding:20px 0 0 0;">
+            City of Guihulngan real-time monitoring of Covid-19 Cases.
+Covid-19 Hotlines
+Telephone:(074) 442-1900, (074) 442-1905, (074) 661-1455
+
+Cellular: Globe(0927) 628-0498, Smart(0999) 678-4335
+          </div>                      
+          <h4 onclick="show_proj(img1.src,'Created in 1995, this software was used by Chonlin Corp. and Sheridan Marketing Inc. for their Receivables and Inventory requirements.',
+              '')">Click Here</h4>
+        </div>
+      </div>  
+    </div>
+    <div class="col_projbox">  
+      <div class="class_tilt_div">Guihulngan In My Pocket</div>     
+      <div class="class_div1"><img id="img3" src="photos/bimp.jpg" class="class_div1_img" alt="aidfi img"/></div>
+      <div class="class_div2">
+        <div class="class_div2_box">
+          <div style="font-size:16px;padding:20px 0 0 0;">
+            Downloadable Forms:
+
+Application form New Borrower (amended)
+
+Application form New Borrower Co-Maker (amended)
+
+Application form Old Borrower (amended)
+
+Application form Old Borrower Co-Maker (amended)
+
+Application form Start Up (amended)
+
+Application form Start Up Co-Maker (amended)
+
+Signature Card Borrower (amended)
+
+Signature Card Co-Maker (amended)
+          </div>                      
+          
+        </div>
+      </div>      
+    </div>
+    <div class="col_projbox"> 
+      <div class="class_tilt_div">Vaccination Masterlisting</div>       
+      <div class="class_div1"><img id="img5" src="photos/bakuna.jpg" class="class_div1_img" alt="aidfi img"/></div>
+      <div class="class_div2">
+        <div class="class_div2_box">
+          <div style="font-size:16px;padding:20px 0 0 0;">
+            Baguio in my pocket is a collection of applications that aims to promote an e-government ecosystem of hands-free transactions, citizen data management, contact tracing and other essential services for the people of Baguio City.
+          </div>                      
+          <h4 onclick="show_proj(img1.src,'Created in 1995, this software was used by Chonlin Corp. and Sheridan Marketing Inc. for their Receivables and Inventory requirements.',
+              '')">Download App</h4>
+        </div>
+      </div>  
+    </div>
+    <div class="col_projbox">   
+      <div class="class_tilt_div">Economic Stimulus Package</div>     
+      <div class="class_div1"><img id="img6" src="photos/brave.jpg" class="class_div1_img" alt="aidfi img"/></div>
+      <div class="class_div2">
+        <div class="class_div2_box">
+          <div style="font-size:16px;padding:20px 0 0 0;">
+            BAGUIO COVID-19 VACCINATION MASTERLISTING
+            BAGUIO INOCULATION DIGITALIZE APP (BIDA)
+            Register
+            Baguio City Health Services Office
+          </div>                      
+          <h4 onclick="show_proj(img1.src,'Created in 1995, this software was used by Chonlin Corp. and Sheridan Marketing Inc. for their Receivables and Inventory requirements.',
+              '')">See Vaccinantion Schedule</h4>
+        </div>
+      </div>         
+    </div>
+
+  </div>
+</div>     
+
 <!-- SAP Page content -->
 <div id="sap" class="w3-content" style="display:none;max-width:2000px;margin-top:50px;border:0px solid violet;">
 </div>
 
 <!-- Page content -->
-<div id="wrapper" class="w3-content" style="max-width:2000px;margin-top:50px;">
-  <div style="max-width:100%;position:relative;">
-
-    <!-- Automatic Slideshow Images -->
-    <div class="mySlides w3-animate-fading">
-      <img src="gfx/main0.jpg" style="width:100%">
-      <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-        
-      </div>
-    </div>
-    <div class="mySlides w3-animate-fading">
-      <img src="gfx/main1.jpg" style="width:100%">
-      <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-        
-      </div>
-    </div>
-    <div class="mySlides w3-animate-fading">
-      <img src="gfx/main2.jpg" style="width:100%">
-      <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-        
-      </div>
-    </div>
-
-    <!--div id="div_welcome" style="position:absolute;text-align:center;"-->    
-    <div id="div_welcome" style="position:absolute;text-align:center;">    
-      <img src="gfx/logo.png" style="height:80%;">
-      <div style="width:100%;color:white;text-shadow:1px 1px 10px black;font-weight: bold;">Welcome to Guihulngan City</div>
-    </div>
-
-  </div>
-
-  <div class="w3-container w3-content w3-center w3-padding-64" id="articles">
-    <h2 class="w3-wide">LATEST ARTICLES</h2>    
-    <div id="dtl_articles">      
-    </div>    
-    <button class="w3-row w3-padding w3-center w3-btn w3-purple" onclick="showArticles(0)">View More</button>
-  </div>
-  
-  <!-- Happenings -->
-  <hr>
-  <div class="w3-container w3-content w3-center w3-padding-64" id="happenings">    
-    <h2 class="w3-wide">WHAT's HAPPENING IN GUIHULNGAN</h2>      
-    <div id="dtl_happenings" class="w3-content w3-display-container j3-happenings" style="border:1px solid red;">
-      <img class="xmySlides" src="photos/sinulog.jpg" style="width:100%;height:100%;">
-      <img class="xmySlides" src="photos/carabell.jpg" style="width:100%;height:100%;">
-      <img class="xmySlides" src="photos/fireworks.jpg" style="width:100%;height:100%;">
-      <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
-        <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
-        <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
-        <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
-        <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
-        <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
-      </div>
-    </div>  
-  </div>
-
-  
+<div id="xwrapper" class="w3-content" style="max-width:2000px;margin-top:50px;">
 
   <!-- The City Section -->
   <hr>
   <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="city">
-    <h2 class="w3-wide">THE CITY</h2>
-    <p class="w3-opacity"><i>History</i></p>
-    <p class="w3-justify">
-      There are several versions of how the city derived its name. The first, according to old tales, was attributed to a river flowing directly to the town proper from the mainspring in sitio Anahaw, Barangay Nagsaha, hence the name "GUIPADULNGAN" which means the point where the river flows to an end.
-      Some of the towns of early creation were founded at the close of the 18th century and the beginning of the 19th century. Dauin, for example, was founded in 1787, Tayasan, in 1790; Jimalalud, in 1797; Guijulñgan, in 1800; and Bacong, in 1801.[5]      
-      As constituted in 1898, it included the following towns: Amblan, Ayungon, Ayuquitan, Bacong, Bais, Bayanan, Canoan, Dauin, Dumaguete (capital), Guijulñgan, Manjuyod, Nueva Valencia, Siaton, Tanjay, Tayasan, Tolon, and Zamboanguita.[6]      
-      The second is associated with the gruesome incident in the 19th Century when the Philippines was a colony of Spain; men and women of different ages were said to be captured, beheaded and thrown into the sea by the Moros, now known as Tañon Strait. Other accounts claim that the Moro invaders dropped a bell into the sea when they found out that it was used by the lookout to warn the townsfolk of their coming. Since that time, the place has been called "GUIHULUGAN" which means, "Place where a thing was dropped". But in the Spanish writing, "U" and "N" are similar, which is why it became commonly written and known as GUIHULNGAN.      
-      Whether it originated as "GUIPADULNGAN" or "GUIHULNGAN", the name is indeed symbolic, as the town is “dropped” with abundant blessings from the Almighty for a significant "end".[7]      
-      In 17th century map Murillo-Velarde Map it somewhat appears as "Dijolongan".
-    </p>
-    <hr>
+    
     <h2 class="w3-wide">CITY GOVERNMENT</h2>
     <p class="w3-opacity"><i>City Mayor</i></p>
     <div class="w3-row w3-padding-32">
@@ -248,114 +376,7 @@ html {
         <p>Hon. Mayor Carlo Jorge Joan L. Reyes</p>
       </div>
     </div>
-    
-    <h2 class="w3-wide">City Councilors</h2>
-    <div class="w3-container w3-content  w3-center" style="max-width:600px;border:1px solid lightgray;">
-       
-      <!--ul style="float:left;width:35%;margin-left:15%;text-align:left;background-color:none;">
-        <li>Filomeno L. Reyes</li>
-        <li>Ana Carla T. Villarmente</li>
-        <li>Pietro Alberto M. Pasigna</li>
-        <li>Angelito M. Pique</li>
-        <li>Lor Abednego S. Besario</li>
-      </ul>  
-      <ul style="float:left;width:45%;margin-left:5%;text-align:left;background-color:none;">
-        <li>Melbourne T. Bustamante</li>
-        <li>Paulo Edison D. Dela Rita Jr.</li>
-        <li>Alvin Lance M. Trinidad</li>
-        <li>Simplicio V. Mijares</li>
-        <li>Samuel R. Rizon</li> 
-      </ul-->
 
-      <ul class="w3-container w3-half w3-left-align w3-padding">
-        <li>Filomeno L. Reyes</li>
-        <li>Ana Carla T. Villarmente</li>
-        <li>Pietro Alberto M. Pasigna</li>
-        <li>Angelito M. Pique</li>
-        <li>Lor Abednego S. Besario</li>
-      </ul>  
-      <ul class="w3-container w3-half  w3-left-align w3-padding">
-        <li>Melbourne T. Bustamante</li>
-        <li>Paulo Edison D. Dela Rita Jr.</li>
-        <li>Alvin Lance M. Trinidad</li>
-        <li>Simplicio V. Mijares</li>
-        <li>Samuel R. Rizon</li> 
-      </ul>
-      
-    </div>  
-
-  </div>
-
-  <hr>
-  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:600px" id="barangay">
-    <h2 class="w3-wide">THE BARANGAYS</h2>
-    <p class="w3-opacity"><i>Guihulngan is politically subdivided into 33 barangays</i></p>
-    <p>      
-      <ul class="w3-container w3-third w3-left-align">
-        <li>Bakid</li>
-        <li>Balogo</li>
-        <li>Banwague</li>
-        <li>Basak</li>
-        <li>Binobohan</li>
-        <li>Buenavista</li>
-        <li>Bulado</li>
-        <li>Calamba</li>
-        <li>Calupa-an</li>
-        <li>Hibaiyo</li>
-        <li>Hilaitan</li>        
-      </ul>
-      <ul class="w3-container w3-third w3-left-align">
-        <li>Hinakpan</li>
-        <li>Humayhumay</li>
-        <li>Imelda</li>
-        <li>Kagawasan</li>
-        <li>Linantuyan</li>
-        <li>Luz</li>
-        <li>Mabunga</li>
-        <li>Mckinley</li>
-        <li>Nagsaha</li>
-        <li>Magsaysay</li>
-        <li>Malusay</li>
-      </ul>
-      <ul class="w3-container w3-third w3-left-align">
-        <li>Mani-ak</li>
-        <li>Padre Zamora</li>
-        <li>Plagatasanon</li>
-        <li>Planas</li>
-        <li>Poblacion</li>
-        <li>Sandayao</li>
-        <li>Tacpao</li>
-        <li>Tinayunan Beach</li>
-        <li>Tinayunan Hill</li>
-        <li>Trinidad</li>
-        <li>Villegas</li>
-      </ul>
-    </p>    
-  </div>
-
-  <hr>
-  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px;" id="tourism">
-    <h2 class="w3-wide">TOURISM</h2>
-    <p class="w3-opacity"><i>Tourism Industry</i></p>
-    <p id="dtl_tourism">
-      Tourism Industry
-    </p>    
-  </div>
-
-  <hr>
-  <div class="w3-container w3-content w3-center w3-padding-64" id="photos">
-    <h2 class="w3-wide">PHOTO RELEASES</h2>    
-    <div id="dtl_photos">      
-    </div>    
-    <button onclick="showPhotos(0)" class="w3-container w3-padding w3-center w3-btn w3-purple">View More</a>  
-  </div>
-
-  <hr>
-  <div class="w3-container w3-content w3-center w3-padding-64" id="videos">
-    <h2 class="w3-wide">VIDEO RELEASES</h2>    
-    <div id="dtl_videos">      
-    </div>    
-    <button onclick="showVideos(0)" class="w3-container w3-padding w3-center w3-btn w3-purple">View More</a>  
   </div>
 
 </div>
@@ -369,7 +390,7 @@ html {
 
 <footer>  
 
-  <div id="contact" class="w3-container w3-light-grey" style="border:0px solid black;">
+  <div id="contact" class="w3-container w3-grey" style="border:0px solid black;">
     
     <div class="w3-container w3-padding-32" style="margin:auto;max-width:1100px;border:0px solid green;">
 
@@ -436,31 +457,18 @@ html {
 <script src="js/axios.min.js" type="text/javascript"></script>
 <script src="js/enadlib.js" type="text/javascript"></script>
 <script src="js/je_msg.js" type="text/javascript"></script>
-
-<script type='text/javascript' src='navi.js'></script>
-<script type='text/javascript' src='pages.js'></script>
-<script type='text/javascript' src='subpages.js'></script>
+<script src="js/ckeditor/ckeditor.js" type="text/javascript"></script>
 <script type='text/javascript' src='main.js'></script>
 
+<script type='text/javascript' src='pages.js'></script>
+
+<script type='text/javascript' src='pages/about.js'></script>
+<script type='text/javascript' src='pages/govt.js'></script>
+
+<script type='text/javascript' src='navi.js'></script>
+
+
 <script>  
-
-
-//gotoDiv_Home('wrapper');
-
-
-
-
-function carousel() {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  myIndex++;
-  if (myIndex > x.length) {myIndex = 1}    
-  x[myIndex-1].style.display = "block";  
-  setTimeout(carousel, 9000);    
-}
 
 // Used to toggle the menu on small screens when clicking on the menu button
 function myFunction() {
@@ -472,23 +480,25 @@ function myFunction() {
   }
 }
 
-
 // Automatic Slideshow - change image every 4 seconds
 var myIndex = 0;
+var slideIndex = 0;
 carousel();
 
-// When the user clicks anywhere outside of the modal, close it
-var modal = document.getElementById('ticketModal');
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
   }
+  slideIndex++;
+  if (slideIndex > x.length) {slideIndex = 1}    
+  
+  plusDivs(0);
+  setTimeout(carousel, 9000);    
 }
 
 // =====================================================================
-
-var slideIndex = 1;
-showDivs(slideIndex);
 
 function plusDivs(n) {
   showDivs(slideIndex += n);
@@ -500,15 +510,15 @@ function currentDiv(n) {
 
 function showDivs(n) {
   var i;
-  var x = document.getElementsByClassName("xmySlides");
+  var x = document.getElementsByClassName("mySlides");
   var dots = document.getElementsByClassName("demo");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
+  if (n > x.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = x.length} ;
   for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
+     x[i].style.display = "none";  
   }
   for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" w3-white", "");
+     dots[i].className = dots[i].className.replace(" w3-white", "");
   }
   x[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " w3-white";

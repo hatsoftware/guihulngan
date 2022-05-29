@@ -23,19 +23,16 @@ window.onpopstate = function (event) {
   //gotoDiv(content);
   //alert('window.onpopstate: '+content);
   if(content){ 
-    if(content=='home'){
-      gotoDiv_Home('wrapper');
-    }else if(content=='videos-all'){
-      showVideos();
-    }else if(content=='photos-all'){    
-      showPhotos();
-    }else if(content=='articles-all'){
-      showArticles();
-    }else{
-      gotoDiv_Page(content);
-    }
-  }else{
-    //alert('wala content');
+    if(content=='home'){ gotoDiv_Home('wrapper'); }
+    else if(content=='videos-all'){ showVideos(); }
+    else if(content=='photos-all'){ showPhotos(); }
+    else if(content=='articles-all'){ showArticles(); }
+    else if(content=='quickfacts'){ showQuickFacts(); }
+    else if(content=='history'){ showHistory(); }
+    else if(content=='city-profile'){ showCityProfile(); }
+    else if(content=='official-seals'){ showOfficialSeals(); }
+    else if(content=='officials'){ showOfficials(); }
+    else{ gotoDiv_Page(content); }  
   }
 }
 

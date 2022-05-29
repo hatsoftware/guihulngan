@@ -42,9 +42,9 @@ function get_db(){
   DB_USER=[];
   DB_HAP=[];
   //alert(JBE_API);
-  dispProgress('dtl_articles');
-  dispProgress('dtl_photos');
-  dispProgress('dtl_videos');
+  //dispProgress('dtl_articles');
+  //dispProgress('dtl_photos');
+  //dispProgress('dtl_videos');
   axios.post(JBE_API+'z_tanan.php', { request:0 },JBE_HEADER)
   .then(function (response) {    
     DB_ARTICLES = response.data[0];    
@@ -56,10 +56,10 @@ function get_db(){
     
     //alert('DB_ARTICLES '+DB_ARTICLES.length+'\n'+'DB_PHOTOS '+DB_PHOTOS.length+'\n'+'DB_VIDEOS '+DB_VIDEOS.length+'\n'+'DB_USER '+DB_USER.length);
     
-    dispArticles(3);
+    //dispArticles(3);
     //dispHappenings();
-    dispPhotos(3);
-    dispVideos(2);
+    //dispPhotos(3);
+    //dispVideos(2);
   })    
   .catch(function (err) {    
     console.log(err);
@@ -72,4 +72,9 @@ function dispProgress(div){
       '<img class="w3-image" src="gfx/dots.gif"/>'+ 
     '</div>';   
   document.getElementById(div).innerHTML=dtl; 
+}
+
+function show_proj(){
+  var dtl="Sorry, this page is still under construction - Jeffrey";
+  MSG_SHOW(vbOk,"ERROR: ",dtl,function(){},function(){});
 }
